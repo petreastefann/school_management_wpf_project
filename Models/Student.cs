@@ -9,18 +9,18 @@
 		public string LastName {
 			get; set;
 		}
-		public Class Class {
+		public Classroom Classroom {
 			get; set;
 		}
 		public Specialization Specialization {
 			get; set;
 		}
 
-		public Student(int id, string firstName, string lastName, Class @class, Specialization specialization) {
+		public Student(int id, string firstName, string lastName, Classroom classroom, Specialization specialization) {
 			Id = id;
 			FirstName = firstName;
 			LastName = lastName;
-			Class = @class;
+			Classroom = classroom;
 			Specialization = specialization;
 		}
 	}

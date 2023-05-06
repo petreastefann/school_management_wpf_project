@@ -14,15 +14,15 @@ namespace school_management_wpf_project.Models {
 		public ObservableCollection<Subject> Subjects {
 			get; set;
 		}
-		public ObservableCollection<Class> Classes {
+		public ObservableCollection<Classroom> Classrooms {
 			get; set;
 		}
-		public Teacher(int id, string firstName, string lastName, ObservableCollection<Subject> subjects, ObservableCollection<Class> classes) {
+		public Teacher(int id, string firstName, string lastName, ObservableCollection<Subject> subjects, ObservableCollection<Classroom> classrooms) {
 			Id = id;
 			FirstName = firstName;
 			LastName = lastName;
 			Subjects = subjects;
-			Classes = classes;
+			Classrooms = classrooms;
 		}
 	}
 }

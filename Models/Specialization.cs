@@ -8,13 +8,13 @@ namespace school_management_wpf_project.Models {
 		public string Name {
 			get; set;
 		}
-		public ObservableCollection<Class> Classes {
+		public ObservableCollection<Classroom> Classrooms {
 			get; set;
 		}
-		public Specialization(int id, string name, ObservableCollection<Class> classes) {
+		public Specialization(int id, string name, ObservableCollection<Classroom> classrooms) {
 			Id = id;
 			Name = name;
-			Classes = classes;
+			Classrooms = classrooms;
 		}
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 
 namespace school_management_wpf_project.Models {
-	public class Class {
+	public class Classroom {
 		public int Id {
 			get; set;
 		}
@@ -15,7 +15,7 @@ namespace school_management_wpf_project.Models {
 			get; set;
 		}
 
-		public Class(int id, string name, ObservableCollection<Student> students, ObservableCollection<Teacher> teachers) {
+		public Classroom(int id, string name, ObservableCollection<Student> students, ObservableCollection<Teacher> teachers) {
 			Id = id;
 			Name = name;
 			Students = students;
