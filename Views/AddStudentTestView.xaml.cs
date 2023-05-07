@@ -7,7 +7,6 @@ namespace school_management_wpf_project.Views {
 	public partial class AddStudentTestView : UserControl {
 		public AddStudentTestView() {
 			InitializeComponent();
-			DataContext = new ViewModels.AddStudentTestViewModel();
 		}
 	}
 }
