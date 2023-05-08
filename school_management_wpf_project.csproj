@@ -16,6 +16,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -83,13 +84,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\User.cs" />
-    <Compile Include="ViewModels\AddStudentTestViewModel.cs" />
-    <Compile Include="ViewModels\LoginOrRegisterViewModel.cs" />
-    <Compile Include="Views\AddStudentTestView.xaml.cs">
+    <Compile Include="data\SchoolDbContext.cs" />
+    <Compile Include="models\User.cs" />
+    <Compile Include="services\UserService.cs" />
+    <Compile Include="viewmodels\AddStudentTestViewModel.cs" />
+    <Compile Include="viewmodels\LoginOrRegisterViewModel.cs" />
+    <Compile Include="views\AddStudentTestView.xaml.cs">
       <DependentUpon>AddStudentTestView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoginOrRegisterView.xaml.cs">
+    <Compile Include="views\LoginOrRegisterView.xaml.cs">
       <DependentUpon>LoginOrRegisterView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -104,27 +107,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\AddStudentTestView.xaml">
+    <Page Include="views\AddStudentTestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LoginOrRegisterView.xaml">
+    <Page Include="views\LoginOrRegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Admin.cs" />
-    <Compile Include="Models\Attendance.cs" />
-    <Compile Include="Models\Classroom.cs" />
-    <Compile Include="Models\ClassroomTeacher.cs" />
-    <Compile Include="Models\Grade.cs" />
-    <Compile Include="Models\HomeroomTeacher.cs" />
-    <Compile Include="Models\Specialization.cs" />
-    <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\Subject.cs" />
-    <Compile Include="Models\Teacher.cs" />
-    <Compile Include="Models\Year.cs" />
+    <Compile Include="models\Admin.cs" />
+    <Compile Include="models\Attendance.cs" />
+    <Compile Include="models\Classroom.cs" />
+    <Compile Include="models\ClassroomTeacher.cs" />
+    <Compile Include="models\Grade.cs" />
+    <Compile Include="models\HomeroomTeacher.cs" />
+    <Compile Include="models\Specialization.cs" />
+    <Compile Include="models\Student.cs" />
+    <Compile Include="models\Subject.cs" />
+    <Compile Include="models\Teacher.cs" />
+    <Compile Include="models\Year.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

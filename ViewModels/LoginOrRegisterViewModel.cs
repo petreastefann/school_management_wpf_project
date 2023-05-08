@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
 
 namespace school_management_wpf_project.ViewModels {
 	public class LoginOrRegisterViewModel {
@@ -23,8 +24,15 @@ namespace school_management_wpf_project.ViewModels {
 		}
 
 		private void Login() {
-			// check if the user exists in the database (+password)
-			//// if yes then take the user type 
+			bool userExists = CheckIfUserExists(Username, Password, UserType);
+
+			if(userExists) {
+				string userType = GetUserType(Username);
+
+			}
+			else {
+				MessageBox.Show("Incorrect username or password", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
 
 		private bool CanLogin() {
