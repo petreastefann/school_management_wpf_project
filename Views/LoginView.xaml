@@ -16,7 +16,11 @@
             <TextBox Text="{Binding Username}"/>
             <TextBlock Text="password: "/>
             <TextBox Text="{Binding Password}"/>
-            <Button Content="Login" Command="{Binding LoginCommand}"/>
+            <!-- place this in the registerView
+            <TextBlock Text="user type: "/>
+            <ComboBox ItemsSource="{Binding UserTypes}" SelectedItem="{Binding UserType}"/>
+            -->
+            <Button Content="login" Command="{Binding LoginCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>
