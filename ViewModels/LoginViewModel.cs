@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using school_management_wpf_project.Data;
 using school_management_wpf_project.Services;
+using school_management_wpf_project.Views;
 using System.ComponentModel;
 using System.Windows;
 
@@ -48,7 +49,9 @@ namespace school_management_wpf_project.ViewModels {
 
 			bool isValidUser = userService.CheckIfUserExists(_username, _password);
 			if(isValidUser) {
-				MessageBox.Show("login successful!");
+				MessageBox.Show("login successful");
+				var mainViewModel = (MainViewModel)Application.Current.MainWindow.DataContext;
+				mainViewModel.CurrentView = new MainMenuView();
 			}
 			else {
 				MessageBox.Show("the user doesnt exist");
