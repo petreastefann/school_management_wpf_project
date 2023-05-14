@@ -17,7 +17,6 @@ namespace school_management_wpf_project.ViewModels {
 			_students = new ObservableCollection<Student>();
 		}
 
-
 		public int Id {
 			get => _id;
 			set {

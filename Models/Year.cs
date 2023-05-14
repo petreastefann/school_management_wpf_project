@@ -13,5 +13,10 @@ namespace school_management_wpf_project.Models {
 			Id = id;
 			Specializations = specializations;
 		}
+
+		public Year() {
+			Id = 0;
+			Specializations = new ObservableCollection<Specialization>();
+		}
 	}
 }

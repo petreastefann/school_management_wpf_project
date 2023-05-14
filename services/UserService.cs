@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using school_management_wpf_project.Data;
+using System.Linq;
 
 namespace school_management_wpf_project.Services {
 	public class UserService {
@@ -12,7 +13,7 @@ namespace school_management_wpf_project.Services {
 			return _context.Users.Any(u => u.Username == username && u.Password == password);
 		}
 
-		public string GetUserType(string username) {
+		public string? GetUserType(string username) {
 			var user = _context.Users.FirstOrDefault(u => u.Username == username);
 
 			if(user != null) {

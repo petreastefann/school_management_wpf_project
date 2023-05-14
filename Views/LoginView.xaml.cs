@@ -13,13 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace school_management_wpf_project.Views {
-	/// <summary>
-	/// Interaction logic for LoginOrRegisterView.xaml
-	/// </summary>
-	public partial class LoginOrRegisterView : UserControl {
-		public LoginOrRegisterView() {
-			InitializeComponent();
-		}
-	}
+namespace school_management_wpf_project.Views
+{
+    /// <summary>
+    /// Interaction logic for LoginView.xaml
+    /// </summary>
+    public partial class LoginView : UserControl
+    {
+        public LoginView()
+        {
+            InitializeComponent();
+        }
+    }
 }

@@ -1,5 +1,5 @@
 ﻿namespace school_management_wpf_project.Models {
-	internal class User {
+	public class User {
 		public int Id {
 			get; set;
 		}
@@ -12,9 +12,15 @@
 		public string UserType {
 			get; set;
 		}
-		public User(string username, string password) {
+		public User(string username, string password, string userType) {
 			Username = username;
 			Password = password;
+			UserType = userType;
+		}
+		public User() {
+			Username = "";
+			Password = "";
+			UserType = "";
 		}
 	}
 }

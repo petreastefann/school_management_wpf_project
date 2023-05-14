@@ -22,5 +22,12 @@
 			Semester = semester;
 			Status = status;
 		}
+		public Attendance() {
+			Id = 0;
+			StudentId = 0;
+			SubjectId = 0;
+			Semester = 0;
+			Status = false;
+		}
 	}
 }

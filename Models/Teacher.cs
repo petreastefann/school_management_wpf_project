@@ -24,5 +24,12 @@ namespace school_management_wpf_project.Models {
 			Subjects = subjects;
 			Classrooms = classrooms;
 		}
+		public Teacher() {
+			Id = 0;
+			FirstName = "";
+			LastName = "";
+			Subjects = new ObservableCollection<Subject>();
+			Classrooms = new ObservableCollection<Classroom>();
+		}
 	}
 }

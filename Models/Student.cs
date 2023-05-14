@@ -23,5 +23,13 @@
 			Classroom = classroom;
 			Specialization = specialization;
 		}
+
+		public Student() {
+			Id = 0;
+			FirstName = "";
+			LastName = "";
+			Classroom = new Classroom();
+			Specialization = new Specialization();
+		}
 	}
 }

@@ -22,5 +22,12 @@
 			Semester = semester;
 			Value = value;
 		}
+		public Grade() {
+			Id = 0;
+			StudentId = 0;
+			SubjectId = 0;
+			Semester = 0;
+			Value = 0;
+		}
 	}
 }

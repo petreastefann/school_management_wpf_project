@@ -16,5 +16,10 @@ namespace school_management_wpf_project.Models {
 			Name = name;
 			Classrooms = classrooms;
 		}
+		public Specialization() {
+			Id = 0;
+			Name = "";
+			Classrooms = new ObservableCollection<Classroom>();
+		}
 	}
 }
