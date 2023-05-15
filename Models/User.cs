@@ -9,18 +9,18 @@
 		public string Password {
 			get; set;
 		}
-		public string UserType {
+		public string Role {
 			get; set;
 		}
-		public User(string username, string password, string userType) {
+		public User(string username, string password, string role) {
 			Username = username;
 			Password = password;
-			UserType = userType;
+			Role = role;
 		}
 		public User() {
 			Username = "";
 			Password = "";
-			UserType = "";
+			Role = "";
 		}
 	}
 }

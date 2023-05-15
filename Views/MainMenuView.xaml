@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:school_management_wpf_project.Views"
-             xmlns:vms="clr-namespace:school_management_wpf_project.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -12,5 +11,9 @@
             <Run Text="welcome, "/>
             <Run Text="{Binding User.Username}"/>
         </TextBlock>
+
+        <Button Content="only for admins" Height="30" Width="100" Margin="0,0,150, 140" Command="{Binding MessageBoxForAdminsCommand}"/>
+        <Button Content="only for teachers and admins" Height="30" Width="170" Margin="0,0,150, 70" Command="{Binding MessageBoxForTeachersCommand}"/>
+        <Button Content="for everyone including students" Height="30" Width="190" Margin="0,0,150, 0" Command="{Binding MessageBoxForEverybodyCommand}"/>
     </Grid>
 </UserControl>

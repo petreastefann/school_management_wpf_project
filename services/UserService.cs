@@ -14,11 +14,11 @@ namespace school_management_wpf_project.Services {
 			return _context.Users.Any(u => u.Username == username && u.Password == password);
 		}
 
-		public string? GetUserType(string username) {
+		public string? GetUserRole(string username) {
 			var user = _context.Users.FirstOrDefault(u => u.Username == username);
 
 			if(user != null) {
-				return user.UserType;
+				return user.Role;
 			}
 
 			return null;
