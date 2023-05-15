@@ -1,4 +1,5 @@
 ﻿using school_management_wpf_project.Data;
+using school_management_wpf_project.Models;
 using System.Linq;
 
 namespace school_management_wpf_project.Services {
@@ -21,6 +22,10 @@ namespace school_management_wpf_project.Services {
 			}
 
 			return null;
+		}
+
+		public User GetUserByUsername(string username) {
+			return _context.Users.FirstOrDefault(u => u.Username == username);
 		}
 	}
 }

@@ -51,7 +51,11 @@ namespace school_management_wpf_project.ViewModels {
 			if(isValidUser) {
 				MessageBox.Show("login successful");
 				var mainViewModel = (MainViewModel)Application.Current.MainWindow.DataContext;
-				mainViewModel.CurrentView = new MainMenuView();
+
+				mainViewModel.User = userService.GetUserByUsername(_username);
+
+				MainMenuViewModel mainMenuViewModel = new MainMenuViewModel(mainViewModel.User);
+				mainViewModel.CurrentView = new MainMenuView { DataContext = mainMenuViewModel };
 			}
 			else {
 				MessageBox.Show("the user doesnt exist");
