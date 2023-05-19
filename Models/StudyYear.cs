@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace school_management_wpf_project.Models {
@@ -10,18 +10,8 @@ namespace school_management_wpf_project.Models {
 		public int Year {
 			get; set;
 		}
-		public virtual ObservableCollection<Specialization> Specializations {
+		public List<Specialization> Specializations {
 			get; set;
-		}
-
-		public StudyYear(ObservableCollection<Specialization> specializations, int year) {
-			Specializations = specializations;
-			Year = year;
-		}
-
-		public StudyYear() {
-			Specializations = new ObservableCollection<Specialization>();
-			Year = 0;
 		}
 	}
 }

@@ -15,16 +15,5 @@ namespace school_management_wpf_project.Models {
 		public string Role {
 			get; set;
 		}
-
-		public User(string username, string password, string role) {
-			Username = username;
-			Password = password;
-			Role = role;
-		}
-		public User() {
-			Username = "";
-			Password = "";
-			Role = "";
-		}
 	}
 }

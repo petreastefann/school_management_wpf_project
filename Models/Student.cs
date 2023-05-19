@@ -12,20 +12,21 @@
 		public string LastName {
 			get; set;
 		}
-		public int ClassroomId {
+		public Classroom Classroom {
 			get; set;
 		}
 
-		public Student(string firstName, string lastName, int classroomId) {
+		public Student(string firstName, string lastName, Classroom classroom) {
 			FirstName = firstName;
 			LastName = lastName;
-			ClassroomId = classroomId;
+			Classroom = classroom;
 		}
 
 		public Student() {
+			Id = 0;
 			FirstName = "";
 			LastName = "";
-			ClassroomId = 0;
+			Classroom = null;
 		}
 	}
 }

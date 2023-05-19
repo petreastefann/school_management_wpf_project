@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace school_management_wpf_project.Models {
@@ -14,25 +14,11 @@ namespace school_management_wpf_project.Models {
 			get; set;
 		}
 
-		public virtual ObservableCollection<Subject> Subjects {
+		public List<Subject> Subjects {
 			get; set;
 		}
-		public virtual ObservableCollection<Classroom> Classrooms {
+		public List<Classroom> Classrooms {
 			get; set;
-		}
-
-		public ClassroomTeacher(string firstName, string lastName) {
-			FirstName = firstName;
-			LastName = lastName;
-			Subjects = new ObservableCollection<Subject>();
-			Classrooms = new ObservableCollection<Classroom>();
-		}
-
-		public ClassroomTeacher() {
-			FirstName = "";
-			LastName = "";
-			Subjects = new ObservableCollection<Subject>();
-			Classrooms = new ObservableCollection<Classroom>();
 		}
 	}
 }
