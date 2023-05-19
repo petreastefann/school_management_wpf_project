@@ -13,7 +13,7 @@ a project which aims to be a school management app.
 - [x] login
 - [ ] register
 - [x] change windows when succesfully logging in
-- [x] move the logged user data to the MainMenuViewModel
-- [ ] do the MainMenuView
-- [ ] do the functionality of the MainMenuView (the admin has total control, whereas the others will have some options restricted)
+- [x] move the logged user data to a specific View depending on their role
+- [ ] do each View
+- [ ] do the functionality of the each ViewModel (admin, teacher, user)
 - [ ] see that database
