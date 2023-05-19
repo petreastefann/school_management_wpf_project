@@ -53,8 +53,18 @@ namespace school_management_wpf_project.ViewModels {
 				var mainViewModel = (MainViewModel)Application.Current.MainWindow.DataContext;
 				mainViewModel.User = userService.GetUserByUsername(_username);
 
-				MainMenuViewModel mainMenuViewModel = new MainMenuViewModel(mainViewModel.User, mainViewModel.SchoolDbContext);
-				mainViewModel.CurrentView = new MainMenuView { DataContext = mainMenuViewModel };
+				if(mainViewModel.User.Role == "admin") {
+					AdminViewModel adminViewModel = new AdminViewModel(mainViewModel.User, mainViewModel.SchoolDbContext);
+					mainViewModel.CurrentView = new AdminView { DataContext = adminViewModel };
+				}
+				else if(mainViewModel.User.Role == "classroom teacher" || mainViewModel.User.Role == "homeroom teacher") {
+					TeacherViewModel teacherViewModel = new TeacherViewModel(mainViewModel.User, mainViewModel.SchoolDbContext);
+					mainViewModel.CurrentView = new TeacherView { DataContext = teacherViewModel };
+				}
+				else if(mainViewModel.User.Role == "student") {
+					StudentViewModel studentViewModel = new StudentViewModel(mainViewModel.User, mainViewModel.SchoolDbContext);
+					mainViewModel.CurrentView = new StudentView { DataContext = studentViewModel };
+				}
 			}
 			else {
 				MessageBox.Show("the user doesnt exist");
