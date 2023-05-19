@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using school_management_wpf_project.Data;
+using school_management_wpf_project.ViewModels;
 using System.Windows;
 
 namespace school_management_wpf_project {
-	/// <summary>
-	/// Interaction logic for App.xaml
-	/// </summary>
 	public partial class App : Application {
+		public SchoolDbContext SchoolDbContext => (SchoolDbContext)Resources["SchoolDbContext"];
+		public MainViewModel MainViewModel => new MainViewModel(SchoolDbContext);
 	}
 }

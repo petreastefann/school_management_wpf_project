@@ -1,5 +1,8 @@
-﻿namespace school_management_wpf_project.Models {
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace school_management_wpf_project.Models {
 	public class Grade {
+		[Key]
 		public int Id {
 			get; set;
 		}
@@ -9,25 +12,24 @@
 		public int SubjectId {
 			get; set;
 		}
-		public int Semester {
-			get; set;
-		}
 		public int Value {
 			get; set;
 		}
-		public Grade(int id, int studentId, int subjectId, int semester, int value) {
-			Id = id;
+		public int Semester {
+			get; set;
+		}
+
+		public Grade(int studentId, int subjectId, int value, int semester) {
 			StudentId = studentId;
 			SubjectId = subjectId;
-			Semester = semester;
 			Value = value;
+			Semester = semester;
 		}
 		public Grade() {
-			Id = 0;
 			StudentId = 0;
 			SubjectId = 0;
-			Semester = 0;
 			Value = 0;
+			Semester = 0;
 		}
 	}
 }

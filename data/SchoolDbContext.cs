@@ -23,13 +23,16 @@ namespace school_management_wpf_project.Data {
 		public DbSet<Subject> Subjects {
 			get; set;
 		}
-		public DbSet<Teacher> Teachers {
+		public DbSet<ClassroomTeacher> classroomTeachers {
+			get; set;
+		}
+		public DbSet<HomeroomTeacher> homeroomTeachers {
 			get; set;
 		}
 		public DbSet<User> Users {
 			get; set;
 		}
-		public DbSet<Year> StudyYears {
+		public DbSet<StudyYear> StudyYears {
 			get; set;
 		}
 
@@ -44,54 +47,6 @@ namespace school_management_wpf_project.Data {
 
 			IConfigurationRoot configuration = builder.Build();
 			return configuration.GetConnectionString("SchoolDbContext")!;
-		}
-
-		protected override void OnModelCreating(ModelBuilder modelBuilder) {
-			// Configure the models
-			modelBuilder.Entity<Attendance>(entity => {
-				entity.HasKey(e => e.Id);
-				// Add any additional configuration here
-			});
-
-			modelBuilder.Entity<Classroom>(entity => {
-				entity.HasKey(e => e.Id);
-				// Add any additional configuration here
-			});
-
-			modelBuilder.Entity<Grade>(entity => {
-				entity.HasKey(e => e.Id);
-				// Add any additional configuration here
-			});
-
-			modelBuilder.Entity<Specialization>(entity => {
-				entity.HasKey(e => e.Id);
-				// Add any additional configuration here
-			});
-
-			modelBuilder.Entity<Student>(entity => {
-				entity.HasKey(e => e.Id);
-				// Add any additional configuration here
-			});
-
-			modelBuilder.Entity<Subject>(entity => {
-				entity.HasKey(e => e.Id);
-				// Add any additional configuration here
-			});
-
-			modelBuilder.Entity<Teacher>(entity => {
-				entity.HasKey(e => e.Id);
-				// Add any additional configuration here
-			});
-
-			modelBuilder.Entity<User>(entity => {
-				entity.HasKey(e => e.Id);
-				// Add any additional configuration here
-			});
-
-			modelBuilder.Entity<Year>(entity => {
-				entity.HasKey(e => e.Id);
-				// Add any additional configuration here
-			});
 		}
 	}
 

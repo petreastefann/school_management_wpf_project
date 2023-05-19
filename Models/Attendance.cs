@@ -1,5 +1,8 @@
-﻿namespace school_management_wpf_project.Models {
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace school_management_wpf_project.Models {
 	public class Attendance {
+		[Key]
 		public int Id {
 			get; set;
 		}
@@ -15,15 +18,14 @@
 		public bool Status {
 			get; set;
 		}
-		public Attendance(int id, int studentId, int subjectId, int semester, bool status) {
-			Id = id;
+
+		public Attendance(int studentId, int subjectId, int semester, bool status) {
 			StudentId = studentId;
 			SubjectId = subjectId;
 			Semester = semester;
 			Status = status;
 		}
 		public Attendance() {
-			Id = 0;
 			StudentId = 0;
 			SubjectId = 0;
 			Semester = 0;

@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using school_management_wpf_project.Data;
 using school_management_wpf_project.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -10,9 +11,11 @@ public class MainMenuViewModel : INotifyPropertyChanged {
 	private ICommand _messageBoxForAdmins;
 	private ICommand _messageBoxForTeachers;
 	private ICommand _messageBoxForEverybody;
+	private readonly SchoolDbContext _schoolDbContext;
 
-	public MainMenuViewModel(User user) {
+	public MainMenuViewModel(User user, SchoolDbContext schoolDbContext) {
 		_user = user;
+		_schoolDbContext = schoolDbContext;
 		_messageBoxForAdmins = new RelayCommand(MessageBoxForAdmins, CanExecuteAdminCommand);
 		_messageBoxForTeachers = new RelayCommand(MessageBoxForTeachers, CanExecuteTeacherAdminCommand);
 		_messageBoxForEverybody = new RelayCommand(MessageBoxForEverybody);

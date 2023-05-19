@@ -1,5 +1,8 @@
-﻿namespace school_management_wpf_project.Models {
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace school_management_wpf_project.Models {
 	public class User {
+		[Key]
 		public int Id {
 			get; set;
 		}
@@ -12,6 +15,7 @@
 		public string Role {
 			get; set;
 		}
+
 		public User(string username, string password, string role) {
 			Username = username;
 			Password = password;

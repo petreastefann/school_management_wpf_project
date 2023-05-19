@@ -1,14 +1,41 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace school_management_wpf_project.Models {
 	public class HomeroomTeacher : Teacher {
-		public int ClassId {
+		[Key]
+		public int Id {
+			get; set;
+		}
+		public string FirstName {
+			get; set;
+		}
+		public string LastName {
+			get; set;
+		}
+		public int ClassroomId {
+			get; set;
+		}
+		public virtual ObservableCollection<Subject> Subjects {
+			get; set;
+		}
+		public virtual ObservableCollection<Classroom> Classrooms {
 			get; set;
 		}
 
-		public HomeroomTeacher(int id, string firstName, string lastName, ObservableCollection<Subject> subjects, ObservableCollection<Classroom> classrooms, int classId)
-			: base(id, firstName, lastName, subjects, classrooms) {
-			ClassId = classId;
+		public HomeroomTeacher(string firstName, string lastName, int classroomId, ObservableCollection<Subject> subjects, ObservableCollection<Classroom> classrooms) {
+			FirstName = firstName;
+			LastName = lastName;
+			ClassroomId = classroomId;
+			Subjects = subjects;
+			Classrooms = classrooms;
+		}
+		public HomeroomTeacher() {
+			FirstName = "";
+			LastName = "";
+			ClassroomId = 0;
+			Subjects = new ObservableCollection<Subject>();
+			Classrooms = new ObservableCollection<Classroom>();
 		}
 	}
 }

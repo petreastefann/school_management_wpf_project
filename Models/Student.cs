@@ -1,5 +1,8 @@
 ﻿namespace school_management_wpf_project.Models {
+	using System.ComponentModel.DataAnnotations;
+
 	public class Student {
+		[Key]
 		public int Id {
 			get; set;
 		}
@@ -9,27 +12,20 @@
 		public string LastName {
 			get; set;
 		}
-		public Classroom Classroom {
-			get; set;
-		}
-		public Specialization Specialization {
+		public int ClassroomId {
 			get; set;
 		}
 
-		public Student(int id, string firstName, string lastName, Classroom classroom, Specialization specialization) {
-			Id = id;
+		public Student(string firstName, string lastName, int classroomId) {
 			FirstName = firstName;
 			LastName = lastName;
-			Classroom = classroom;
-			Specialization = specialization;
+			ClassroomId = classroomId;
 		}
 
 		public Student() {
-			Id = 0;
 			FirstName = "";
 			LastName = "";
-			Classroom = new Classroom();
-			Specialization = new Specialization();
+			ClassroomId = 0;
 		}
 	}
 }

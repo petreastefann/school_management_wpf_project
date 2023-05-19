@@ -1,23 +1,24 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace school_management_wpf_project.Models {
 	public class Specialization {
+		[Key]
 		public int Id {
 			get; set;
 		}
 		public string Name {
 			get; set;
 		}
-		public ObservableCollection<Classroom> Classrooms {
+		public virtual ObservableCollection<Classroom> Classrooms {
 			get; set;
 		}
-		public Specialization(int id, string name, ObservableCollection<Classroom> classrooms) {
-			Id = id;
+
+		public Specialization(string name, ObservableCollection<Classroom> classrooms) {
 			Name = name;
 			Classrooms = classrooms;
 		}
 		public Specialization() {
-			Id = 0;
 			Name = "";
 			Classrooms = new ObservableCollection<Classroom>();
 		}

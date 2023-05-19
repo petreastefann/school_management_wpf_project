@@ -2,8 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:school_management_wpf_project"
+             xmlns:localData="clr-namespace:school_management_wpf_project.Data"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <localData:SchoolDbContext x:Key="SchoolDbContext" />
     </Application.Resources>
 </Application>

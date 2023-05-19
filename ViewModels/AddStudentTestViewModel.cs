@@ -77,7 +77,7 @@ namespace school_management_wpf_project.ViewModels {
 		}
 
 		private void AddStudent() {
-			_students.Add(new Student(_id, _firstName, _lastName, _classroom, _specialization));
+			_students.Add(new Student(_firstName, _lastName, _classroom, _specialization));
 		}
 
 		private bool CanAddPerson() {

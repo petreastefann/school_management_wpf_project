@@ -1,4 +1,5 @@
-﻿using school_management_wpf_project.Models;
+﻿using school_management_wpf_project.Data;
+using school_management_wpf_project.Models;
 using school_management_wpf_project.Views;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -8,8 +9,12 @@ namespace school_management_wpf_project.ViewModels {
 	public class MainViewModel : INotifyPropertyChanged {
 		private User _user;
 		private UserControl _currentView;
+		private readonly SchoolDbContext _schoolDbContext;
 
-		public MainViewModel() {
+		public SchoolDbContext SchoolDbContext => _schoolDbContext;
+
+		public MainViewModel(SchoolDbContext schoolDbContext) {
+			_schoolDbContext = schoolDbContext;
 			CurrentView = new LoginView();
 			User = new User();
 		}

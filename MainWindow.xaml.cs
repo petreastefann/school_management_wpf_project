@@ -1,11 +1,11 @@
-﻿using school_management_wpf_project.ViewModels;
-using System.Windows;
+﻿using System.Windows;
 
 namespace school_management_wpf_project {
 	public partial class MainWindow : Window {
 		public MainWindow() {
 			InitializeComponent();
-			DataContext = new MainViewModel();
+			DataContext = ((App)Application.Current).MainViewModel;
 		}
 	}
+
 }
