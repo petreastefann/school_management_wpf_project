@@ -13,11 +13,11 @@
         </TextBlock>
         <TextBlock Text="TEACHER VIEW" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100">
             <Button Margin="5" Click="OpenAbsence">Absences</Button>
             <Button Margin="5" Click="OpenGrade">Grades</Button>
-            <Button Margin="5" Click="OpenResource">Resources</Button>
             <Button Margin="5" Click="OpenAverage">Averages</Button>
+            <Button Margin="5" Click="OpenResource">Resources</Button>
         </StackPanel>
     </Grid>
 </UserControl>
