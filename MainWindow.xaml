@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ContentControl x:Name="MainViewModel" Content="{Binding CurrentView}"/>
+        <Button Content="open login window" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="200,0,0,0" Click="LoginClick"/>
     </Grid>
 </Window>

@@ -4,9 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:school_management_wpf_project.Views.AdminMiniViews"
+        xmlns:vms="clr-namespace:school_management_wpf_project.ViewModels"
         mc:Ignorable="d"
         Title="AdminAddStudyYear" Height="450" Width="800">
     <Grid>
         <TextBlock Text="AdminAddStudyYear" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,300,0">
+            <DockPanel>
+                <Label>Year name:</Label>
+                <TextBox Text="{Binding StudyYear.Name}"></TextBox>
+            </DockPanel>
+            <DockPanel>
+                <Label>Year:</Label>
+                <DatePicker Text="{Binding StudyYear.Year}"></DatePicker>
+            </DockPanel>
+            <Button Margin="5" Command="{Binding AddStudyYearCommand}" Click="Button_Click">Add</Button>
+            <Button Margin="5" Click="Close">Close</Button>
+        </StackPanel>
     </Grid>
 </Window>

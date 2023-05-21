@@ -35,6 +35,18 @@ namespace school_management_wpf_project.Data {
 		public DbSet<StudyYear> StudyYears {
 			get; set;
 		}
+		public DbSet<Absence> Absences {
+			get; set;
+		}
+		public DbSet<Average> Averages {
+			get; set;
+		}
+		public DbSet<Course> Courses {
+			get; set;
+		}
+		public DbSet<LoggedInUser> LoggedInUsers {
+			get; set;
+		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
 			optionsBuilder.UseSqlServer(GetConnectionString());

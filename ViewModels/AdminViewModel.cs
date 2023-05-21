@@ -1,16 +1,15 @@
-﻿using school_management_wpf_project.Data;
-using school_management_wpf_project.Models;
+﻿using school_management_wpf_project.Models;
+using school_management_wpf_project.Services;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace school_management_wpf_project.ViewModels {
-	internal class AdminViewModel {
+	public class AdminViewModel {
 		private User _user;
-		private readonly SchoolDbContext _schoolDbContext;
+		private StudyYear _studyYear;
 
-		public AdminViewModel(User user, SchoolDbContext schoolDbContext) {
-			_user = user;
-			_schoolDbContext = schoolDbContext;
+		public AdminViewModel() {
+			_user = UserService.GetLoggedInUser();
 		}
 
 		public User User {
@@ -18,6 +17,14 @@ namespace school_management_wpf_project.ViewModels {
 			set {
 				_user = value;
 				OnPropertyChanged(nameof(User));
+			}
+		}
+
+		public StudyYear StudyYear {
+			get => _studyYear;
+			set {
+				_studyYear = value;
+				OnPropertyChanged(nameof(StudyYear));
 			}
 		}
 

@@ -16,7 +16,7 @@ namespace school_management_wpf_project.Models {
 		public List<Student> Students {
 			get; set;
 		}
-		public List<Teacher> Teachers {
+		public Teacher Teacher {
 			get; set;
 		}
 	}

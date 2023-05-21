@@ -1,20 +1,35 @@
-﻿using school_management_wpf_project.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using school_management_wpf_project.Data;
 using school_management_wpf_project.Models;
 using System.Linq;
 
 namespace school_management_wpf_project.Services {
-	public class UserService {
-		private readonly SchoolDbContext _context;
+	public static class UserService {
+		private static SchoolDbContext _context = new SchoolDbContext();
 
-		public UserService(SchoolDbContext context) {
-			_context = context;
+		public static User Login(string username, string password) {
+			var user = _context.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+
+			if(user != null) {
+				_context.Database.ExecuteSqlRaw("TRUNCATE TABLE [LoggedInUsers]");
+				_context.LoggedInUsers.Add(new LoggedInUser { UserId = user.Id });
+				_context.SaveChanges();
+
+				return user;
+			}
+			return null;
 		}
 
-		public bool CheckIfUserExists(string username, string password) {
-			return _context.Users.Any(u => u.Username == username && u.Password == password);
+		public static User GetLoggedInUser() {
+			var loggedInUserId = _context.LoggedInUsers.FirstOrDefault();
+
+			if(loggedInUserId != null) {
+				return _context.Users.FirstOrDefault(u => u.Id == loggedInUserId.UserId);
+			}
+			return null;
 		}
 
-		public string? GetUserRole(string username) {
+		public static string? GetUserRole(string username) {
 			var user = _context.Users.FirstOrDefault(u => u.Username == username);
 
 			if(user != null) {
@@ -24,7 +39,7 @@ namespace school_management_wpf_project.Services {
 			return null;
 		}
 
-		public User GetUserByUsername(string username) {
+		public static User GetUserByUsername(string username) {
 			return _context.Users.FirstOrDefault(u => u.Username == username);
 		}
 	}

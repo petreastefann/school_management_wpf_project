@@ -1,11 +1,21 @@
-﻿using System.Windows;
+﻿using school_management_wpf_project.Views;
+using System.Windows;
 
 namespace school_management_wpf_project {
 	public partial class MainWindow : Window {
 		public MainWindow() {
 			InitializeComponent();
-			DataContext = ((App)Application.Current).MainViewModel;
 		}
+
+		private void LoginClick(object sender, RoutedEventArgs e) {
+			LoginView loginView = new LoginView();
+			loginView.Show();
+		}
+
+		/*private void RegisterClick(object sender, RoutedEventArgs e) {
+			RegisterView registerView = new RegisterView();
+			registerView.Show();
+		}*/
 	}
 
 }

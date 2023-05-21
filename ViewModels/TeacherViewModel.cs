@@ -4,13 +4,11 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace school_management_wpf_project.ViewModels {
-	internal class TeacherViewModel {
+	public class TeacherViewModel {
 		private User _user;
-		private readonly SchoolDbContext _schoolDbContext;
 
 		public TeacherViewModel(User user, SchoolDbContext schoolDbContext) {
 			_user = user;
-			_schoolDbContext = schoolDbContext;
 		}
 
 		public User User {
