@@ -10,11 +10,7 @@ namespace school_management_wpf_project.Views.AdminMiniViews {
 		}
 
 		private void Close(object sender, RoutedEventArgs e) {
-
-		}
-
-		private void Button_Click(object sender, RoutedEventArgs e) {
-
+			Close();
 		}
 	}
 }

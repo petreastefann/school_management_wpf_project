@@ -1,21 +1,29 @@
-﻿using school_management_wpf_project.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using school_management_wpf_project.BusinessLogicLayer;
+using school_management_wpf_project.Models;
 using school_management_wpf_project.Services;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Input;
 
 namespace school_management_wpf_project.ViewModels {
-	public class AdminViewModel {
+	public class AdminViewModel : ObservableObject {
 		private User _user;
 		private StudyYear _studyYear;
 
 		public AdminViewModel() {
-			_user = UserService.GetLoggedInUser();
+			// initialize members
+			User = UserService.GetLoggedInUser();
+			StudyYear = new StudyYear();
+
+			// initialize commands
+			AddStudyYearCommand = new RelayCommand(AddStudyYear);
 		}
 
 		public User User {
 			get => _user;
 			set {
-				_user = value;
+				SetProperty(ref _user, value);
 				OnPropertyChanged(nameof(User));
 			}
 		}
@@ -23,15 +31,18 @@ namespace school_management_wpf_project.ViewModels {
 		public StudyYear StudyYear {
 			get => _studyYear;
 			set {
-				_studyYear = value;
+				SetProperty(ref _studyYear, value);
 				OnPropertyChanged(nameof(StudyYear));
 			}
 		}
 
-		public event PropertyChangedEventHandler PropertyChanged;
+		public ICommand AddStudyYearCommand {
+			get;
+		}
 
-		protected void OnPropertyChanged([CallerMemberName] string propertyName = null) {
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		private void AddStudyYear() {
+			StudyYearBLL.Add(StudyYear);
+			MessageBox.Show("Study year added successfully");
 		}
 	}
 }

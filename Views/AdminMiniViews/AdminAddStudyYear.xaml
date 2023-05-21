@@ -7,6 +7,7 @@
         xmlns:vms="clr-namespace:school_management_wpf_project.ViewModels"
         mc:Ignorable="d"
         Title="AdminAddStudyYear" Height="450" Width="800">
+
     <Grid>
         <TextBlock Text="AdminAddStudyYear" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
@@ -17,9 +18,9 @@
             </DockPanel>
             <DockPanel>
                 <Label>Year:</Label>
-                <DatePicker Text="{Binding StudyYear.Year}"></DatePicker>
+                <TextBox Text="{Binding StudyYear.Year}"></TextBox>
             </DockPanel>
-            <Button Margin="5" Command="{Binding AddStudyYearCommand}" Click="Button_Click">Add</Button>
+            <Button Margin="5" Command="{Binding AddStudyYearCommand}">Add</Button>
             <Button Margin="5" Click="Close">Close</Button>
         </StackPanel>
     </Grid>

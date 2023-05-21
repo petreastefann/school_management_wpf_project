@@ -9,6 +9,7 @@ namespace school_management_wpf_project {
 
 		private void LoginClick(object sender, RoutedEventArgs e) {
 			LoginView loginView = new LoginView();
+
 			loginView.Show();
 		}
 
