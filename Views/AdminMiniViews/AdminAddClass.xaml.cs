@@ -12,13 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace school_management_wpf_project.Views.AdminMiniViews {
-	/// <summary>
-	/// Interaction logic for AdminCreateClass.xaml
-	/// </summary>
-	public partial class AdminCreateClass : Window {
-		public AdminCreateClass() {
-			InitializeComponent();
-		}
-	}
+namespace school_management_wpf_project.Views.AdminMiniViews
+{
+    /// <summary>
+    /// Interaction logic for AdminAddClass.xaml
+    /// </summary>
+    public partial class AdminAddClass : Window
+    {
+        public AdminAddClass()
+        {
+            InitializeComponent();
+        }
+    }
 }

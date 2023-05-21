@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="TeacherAddMaterial" Height="450" Width="800">
     <Grid>
-        
+        <TextBlock Text="TeacherAddMaterial" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </Window>

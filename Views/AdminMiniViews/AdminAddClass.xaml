@@ -1,12 +1,12 @@
-﻿<Window x:Class="school_management_wpf_project.Views.AdminMiniViews.AdminCreateClass"
+﻿<Window x:Class="school_management_wpf_project.Views.AdminMiniViews.AdminAddClass"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:school_management_wpf_project.Views.AdminMiniViews"
         mc:Ignorable="d"
-        Title="AdminCreateClass" Height="450" Width="800">
+        Title="AdminAddClass" Height="450" Width="800">
     <Grid>
-        
+        <TextBlock Text="AdminAddClass" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
     </Grid>
 </Window>

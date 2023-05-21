@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using school_management_wpf_project.Views.StudentMiniViews;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace school_management_wpf_project.Views {
@@ -10,20 +11,28 @@ namespace school_management_wpf_project.Views {
 			InitializeComponent();
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e) {
-
+		private void StudentSeeAverages(object sender, RoutedEventArgs e) {
+			StudentViewAllAverages studentViewAllAverages = new StudentViewAllAverages();
+			studentViewAllAverages.DataContext = this.DataContext;
+			studentViewAllAverages.Show();
 		}
 
-		private void Button_Click_1(object sender, RoutedEventArgs e) {
-
+		private void StudentSeeAbsences(object sender, RoutedEventArgs e) {
+			StudentViewAllAbsences studentViewAllAbsences = new StudentViewAllAbsences();
+			studentViewAllAbsences.DataContext = this.DataContext;
+			studentViewAllAbsences.Show();
 		}
 
-		private void Button_Click_2(object sender, RoutedEventArgs e) {
-
+		private void StudentSeeGrades(object sender, RoutedEventArgs e) {
+			StudentViewAllGrades studentViewAllGrades = new StudentViewAllGrades();
+			studentViewAllGrades.DataContext = this.DataContext;
+			studentViewAllGrades.Show();
 		}
 
-		private void Button_Click_3(object sender, RoutedEventArgs e) {
-
+		private void StudentSeeTeachingMaterial(object sender, RoutedEventArgs e) {
+			StudentViewAllMaterial studentViewAllMaterial = new StudentViewAllMaterial();
+			studentViewAllMaterial.DataContext = this.DataContext;
+			studentViewAllMaterial.Show();
 		}
 	}
 }

@@ -17,7 +17,7 @@
             <Button Margin="5" Click="OpenAbsence">Absences</Button>
             <Button Margin="5" Click="OpenGrade">Grades</Button>
             <Button Margin="5" Click="OpenAverage">Averages</Button>
-            <Button Margin="5" Click="OpenResource">Resources</Button>
+            <Button Margin="5" Click="OpenMaterial">Teaching Materials</Button>
         </StackPanel>
     </Grid>
 </UserControl>

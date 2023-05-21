@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="TeacherAddAbsences" Height="450" Width="800">
     <Grid>
-        
+        <TextBlock Text="TeacherAddAbsences" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </Window>

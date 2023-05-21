@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="StudentViewAllAverages" Height="450" Width="800">
     <Grid>
-        
+        <TextBlock Text="StudentViewAllAverages" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </Window>
