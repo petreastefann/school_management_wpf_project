@@ -475,7 +475,7 @@ namespace school_management_wpf_project.Migrations
                         .HasForeignKey("HomeroomTeacherId");
 
                     b.HasOne("school_management_wpf_project.Models.Specialization", "Specialization")
-                        .WithMany("Classrooms")
+                        .WithMany()
                         .HasForeignKey("SpecializationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -586,11 +586,6 @@ namespace school_management_wpf_project.Migrations
                     b.Navigation("Classrooms");
 
                     b.Navigation("Subjects");
-                });
-
-            modelBuilder.Entity("school_management_wpf_project.Models.Specialization", b =>
-                {
-                    b.Navigation("Classrooms");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.StudyYear", b =>

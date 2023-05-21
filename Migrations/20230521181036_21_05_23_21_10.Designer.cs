@@ -12,8 +12,8 @@ using school_management_wpf_project.Data;
 namespace school_management_wpf_project.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    [Migration("20230521144608_23_05_21_17_46")]
-    partial class _23_05_21_17_46
+    [Migration("20230521181036_21_05_23_21_10")]
+    partial class _21_05_23_21_10
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -478,7 +478,7 @@ namespace school_management_wpf_project.Migrations
                         .HasForeignKey("HomeroomTeacherId");
 
                     b.HasOne("school_management_wpf_project.Models.Specialization", "Specialization")
-                        .WithMany("Classrooms")
+                        .WithMany()
                         .HasForeignKey("SpecializationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -589,11 +589,6 @@ namespace school_management_wpf_project.Migrations
                     b.Navigation("Classrooms");
 
                     b.Navigation("Subjects");
-                });
-
-            modelBuilder.Entity("school_management_wpf_project.Models.Specialization", b =>
-                {
-                    b.Navigation("Classrooms");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.StudyYear", b =>

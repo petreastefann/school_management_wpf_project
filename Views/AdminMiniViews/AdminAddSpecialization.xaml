@@ -8,5 +8,14 @@
         Title="AdminAddSpecialization" Height="450" Width="800">
     <Grid>
         <TextBlock Text="AdminAddSpecialization" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,300,0">
+            <DockPanel>
+                <Label>Specialization name:</Label>
+                <TextBox Text="{Binding Specialization.Name}"></TextBox>
+            </DockPanel>
+            <Button Margin="5" Command="{Binding AddSpecializationCommand, UpdateSourceTrigger=PropertyChanged}">Add</Button>
+            <Button Margin="5" Click="Close">Close</Button>
+        </StackPanel>
     </Grid>
 </Window>

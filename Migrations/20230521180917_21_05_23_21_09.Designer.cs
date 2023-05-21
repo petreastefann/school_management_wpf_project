@@ -12,8 +12,8 @@ using school_management_wpf_project.Data;
 namespace school_management_wpf_project.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    [Migration("20230521144347_23_05_21_17_43")]
-    partial class _23_05_21_17_43
+    [Migration("20230521180917_21_05_23_21_09")]
+    partial class _21_05_23_21_09
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -255,6 +255,22 @@ namespace school_management_wpf_project.Migrations
                     b.HasIndex("ClassroomId");
 
                     b.ToTable("HomeroomTeachers");
+                });
+
+            modelBuilder.Entity("school_management_wpf_project.Models.LoggedInUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LoggedInUsers");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.Specialization", b =>

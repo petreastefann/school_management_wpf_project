@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace school_management_wpf_project.Models {
 	public class Specialization {
@@ -8,9 +7,6 @@ namespace school_management_wpf_project.Models {
 			get; set;
 		}
 		public string Name {
-			get; set;
-		}
-		public List<Classroom> Classrooms {
 			get; set;
 		}
 	}
