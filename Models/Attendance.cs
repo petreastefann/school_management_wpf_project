@@ -6,7 +6,7 @@ namespace school_management_wpf_project.Models {
 		public int Id {
 			get; set;
 		}
-		public Student Student {
+		public User Student {
 			get; set;
 		}
 		public Subject Subject {

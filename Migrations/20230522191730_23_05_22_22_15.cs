@@ -4,22 +4,9 @@
 
 namespace school_management_wpf_project.Migrations {
 	/// <inheritdoc />
-	public partial class _23_05_22_21_10 : Migration {
+	public partial class _23_05_22_22_15 : Migration {
 		/// <inheritdoc />
 		protected override void Up(MigrationBuilder migrationBuilder) {
-			migrationBuilder.CreateTable(
-				name: "Averages",
-				columns: table => new {
-					Id = table.Column<int>(type: "int", nullable: false)
-						.Annotation("SqlServer:Identity", "1, 1"),
-					StudentId = table.Column<int>(type: "int", nullable: false),
-					CourseId = table.Column<int>(type: "int", nullable: false),
-					Grade = table.Column<int>(type: "int", nullable: false)
-				},
-				constraints: table => {
-					table.PrimaryKey("PK_Averages", x => x.Id);
-				});
-
 			migrationBuilder.CreateTable(
 				name: "HomeroomTeachers",
 				columns: table => new {
@@ -140,6 +127,32 @@ namespace school_management_wpf_project.Migrations {
 				});
 
 			migrationBuilder.CreateTable(
+				name: "Attendances",
+				columns: table => new {
+					Id = table.Column<int>(type: "int", nullable: false)
+						.Annotation("SqlServer:Identity", "1, 1"),
+					StudentId = table.Column<int>(type: "int", nullable: false),
+					SubjectId = table.Column<int>(type: "int", nullable: false),
+					Semester = table.Column<int>(type: "int", nullable: false),
+					Status = table.Column<bool>(type: "bit", nullable: false)
+				},
+				constraints: table => {
+					table.PrimaryKey("PK_Attendances", x => x.Id);
+					table.ForeignKey(
+						name: "FK_Attendances_Subjects_SubjectId",
+						column: x => x.SubjectId,
+						principalTable: "Subjects",
+						principalColumn: "Id",
+						onDelete: ReferentialAction.Cascade);
+					table.ForeignKey(
+						name: "FK_Attendances_Users_StudentId",
+						column: x => x.StudentId,
+						principalTable: "Users",
+						principalColumn: "Id",
+						onDelete: ReferentialAction.Cascade);
+				});
+
+			migrationBuilder.CreateTable(
 				name: "Courses",
 				columns: table => new {
 					Id = table.Column<int>(type: "int", nullable: false)
@@ -153,6 +166,32 @@ namespace school_management_wpf_project.Migrations {
 					table.ForeignKey(
 						name: "FK_Courses_Users_HomeroomTeacherId",
 						column: x => x.HomeroomTeacherId,
+						principalTable: "Users",
+						principalColumn: "Id",
+						onDelete: ReferentialAction.Cascade);
+				});
+
+			migrationBuilder.CreateTable(
+				name: "Grades",
+				columns: table => new {
+					Id = table.Column<int>(type: "int", nullable: false)
+						.Annotation("SqlServer:Identity", "1, 1"),
+					StudentId = table.Column<int>(type: "int", nullable: false),
+					SubjectId = table.Column<int>(type: "int", nullable: false),
+					Value = table.Column<int>(type: "int", nullable: false),
+					Semester = table.Column<int>(type: "int", nullable: false)
+				},
+				constraints: table => {
+					table.PrimaryKey("PK_Grades", x => x.Id);
+					table.ForeignKey(
+						name: "FK_Grades_Subjects_SubjectId",
+						column: x => x.SubjectId,
+						principalTable: "Subjects",
+						principalColumn: "Id",
+						onDelete: ReferentialAction.Cascade);
+					table.ForeignKey(
+						name: "FK_Grades_Users_StudentId",
+						column: x => x.StudentId,
 						principalTable: "Users",
 						principalColumn: "Id",
 						onDelete: ReferentialAction.Cascade);
@@ -190,6 +229,56 @@ namespace school_management_wpf_project.Migrations {
 				});
 
 			migrationBuilder.CreateTable(
+				name: "Absences",
+				columns: table => new {
+					Id = table.Column<int>(type: "int", nullable: false)
+						.Annotation("SqlServer:Identity", "1, 1"),
+					StudentId = table.Column<int>(type: "int", nullable: false),
+					CourseId = table.Column<int>(type: "int", nullable: false),
+					IsMotivated = table.Column<bool>(type: "bit", nullable: false)
+				},
+				constraints: table => {
+					table.PrimaryKey("PK_Absences", x => x.Id);
+					table.ForeignKey(
+						name: "FK_Absences_Courses_CourseId",
+						column: x => x.CourseId,
+						principalTable: "Courses",
+						principalColumn: "Id",
+						onDelete: ReferentialAction.Cascade);
+					table.ForeignKey(
+						name: "FK_Absences_Users_StudentId",
+						column: x => x.StudentId,
+						principalTable: "Users",
+						principalColumn: "Id",
+						onDelete: ReferentialAction.Restrict);
+				});
+
+			migrationBuilder.CreateTable(
+				name: "Averages",
+				columns: table => new {
+					Id = table.Column<int>(type: "int", nullable: false)
+						.Annotation("SqlServer:Identity", "1, 1"),
+					StudentId = table.Column<int>(type: "int", nullable: false),
+					CourseId = table.Column<int>(type: "int", nullable: false),
+					Grade = table.Column<int>(type: "int", nullable: false)
+				},
+				constraints: table => {
+					table.PrimaryKey("PK_Averages", x => x.Id);
+					table.ForeignKey(
+						name: "FK_Averages_Courses_CourseId",
+						column: x => x.CourseId,
+						principalTable: "Courses",
+						principalColumn: "Id",
+						onDelete: ReferentialAction.Cascade);
+					table.ForeignKey(
+						name: "FK_Averages_Users_StudentId",
+						column: x => x.StudentId,
+						principalTable: "Users",
+						principalColumn: "Id",
+						onDelete: ReferentialAction.Restrict);
+				});
+
+			migrationBuilder.CreateTable(
 				name: "CourseStudyYearSpecializations",
 				columns: table => new {
 					Id = table.Column<int>(type: "int", nullable: false)
@@ -220,6 +309,30 @@ namespace school_management_wpf_project.Migrations {
 				});
 
 			migrationBuilder.CreateTable(
+				name: "StudentClassrooms",
+				columns: table => new {
+					Id = table.Column<int>(type: "int", nullable: false)
+						.Annotation("SqlServer:Identity", "1, 1"),
+					StudentId = table.Column<int>(type: "int", nullable: false),
+					ClassroomId = table.Column<int>(type: "int", nullable: false)
+				},
+				constraints: table => {
+					table.PrimaryKey("PK_StudentClassrooms", x => x.Id);
+					table.ForeignKey(
+						name: "FK_StudentClassrooms_Classrooms_ClassroomId",
+						column: x => x.ClassroomId,
+						principalTable: "Classrooms",
+						principalColumn: "Id",
+						onDelete: ReferentialAction.Cascade);
+					table.ForeignKey(
+						name: "FK_StudentClassrooms_Users_StudentId",
+						column: x => x.StudentId,
+						principalTable: "Users",
+						principalColumn: "Id",
+						onDelete: ReferentialAction.Restrict);
+				});
+
+			migrationBuilder.CreateTable(
 				name: "Students",
 				columns: table => new {
 					Id = table.Column<int>(type: "int", nullable: false)
@@ -234,83 +347,6 @@ namespace school_management_wpf_project.Migrations {
 						name: "FK_Students_Classrooms_ClassroomId",
 						column: x => x.ClassroomId,
 						principalTable: "Classrooms",
-						principalColumn: "Id",
-						onDelete: ReferentialAction.Cascade);
-				});
-
-			migrationBuilder.CreateTable(
-				name: "Absences",
-				columns: table => new {
-					Id = table.Column<int>(type: "int", nullable: false)
-						.Annotation("SqlServer:Identity", "1, 1"),
-					StudentId = table.Column<int>(type: "int", nullable: false),
-					CourseId = table.Column<int>(type: "int", nullable: false),
-					IsMotivated = table.Column<bool>(type: "bit", nullable: false)
-				},
-				constraints: table => {
-					table.PrimaryKey("PK_Absences", x => x.Id);
-					table.ForeignKey(
-						name: "FK_Absences_Courses_CourseId",
-						column: x => x.CourseId,
-						principalTable: "Courses",
-						principalColumn: "Id",
-						onDelete: ReferentialAction.Cascade);
-					table.ForeignKey(
-						name: "FK_Absences_Students_StudentId",
-						column: x => x.StudentId,
-						principalTable: "Students",
-						principalColumn: "Id",
-						onDelete: ReferentialAction.Restrict);
-				});
-
-			migrationBuilder.CreateTable(
-				name: "Attendances",
-				columns: table => new {
-					Id = table.Column<int>(type: "int", nullable: false)
-						.Annotation("SqlServer:Identity", "1, 1"),
-					StudentId = table.Column<int>(type: "int", nullable: false),
-					SubjectId = table.Column<int>(type: "int", nullable: false),
-					Semester = table.Column<int>(type: "int", nullable: false),
-					Status = table.Column<bool>(type: "bit", nullable: false)
-				},
-				constraints: table => {
-					table.PrimaryKey("PK_Attendances", x => x.Id);
-					table.ForeignKey(
-						name: "FK_Attendances_Students_StudentId",
-						column: x => x.StudentId,
-						principalTable: "Students",
-						principalColumn: "Id",
-						onDelete: ReferentialAction.Cascade);
-					table.ForeignKey(
-						name: "FK_Attendances_Subjects_SubjectId",
-						column: x => x.SubjectId,
-						principalTable: "Subjects",
-						principalColumn: "Id",
-						onDelete: ReferentialAction.Cascade);
-				});
-
-			migrationBuilder.CreateTable(
-				name: "Grades",
-				columns: table => new {
-					Id = table.Column<int>(type: "int", nullable: false)
-						.Annotation("SqlServer:Identity", "1, 1"),
-					StudentId = table.Column<int>(type: "int", nullable: false),
-					SubjectId = table.Column<int>(type: "int", nullable: false),
-					Value = table.Column<int>(type: "int", nullable: false),
-					Semester = table.Column<int>(type: "int", nullable: false)
-				},
-				constraints: table => {
-					table.PrimaryKey("PK_Grades", x => x.Id);
-					table.ForeignKey(
-						name: "FK_Grades_Students_StudentId",
-						column: x => x.StudentId,
-						principalTable: "Students",
-						principalColumn: "Id",
-						onDelete: ReferentialAction.Cascade);
-					table.ForeignKey(
-						name: "FK_Grades_Subjects_SubjectId",
-						column: x => x.SubjectId,
-						principalTable: "Subjects",
 						principalColumn: "Id",
 						onDelete: ReferentialAction.Cascade);
 				});
@@ -334,6 +370,16 @@ namespace school_management_wpf_project.Migrations {
 				name: "IX_Attendances_SubjectId",
 				table: "Attendances",
 				column: "SubjectId");
+
+			migrationBuilder.CreateIndex(
+				name: "IX_Averages_CourseId",
+				table: "Averages",
+				column: "CourseId");
+
+			migrationBuilder.CreateIndex(
+				name: "IX_Averages_StudentId",
+				table: "Averages",
+				column: "StudentId");
 
 			migrationBuilder.CreateIndex(
 				name: "IX_Classrooms_HomeroomTeacherId",
@@ -386,6 +432,16 @@ namespace school_management_wpf_project.Migrations {
 				column: "SubjectsId");
 
 			migrationBuilder.CreateIndex(
+				name: "IX_StudentClassrooms_ClassroomId",
+				table: "StudentClassrooms",
+				column: "ClassroomId");
+
+			migrationBuilder.CreateIndex(
+				name: "IX_StudentClassrooms_StudentId",
+				table: "StudentClassrooms",
+				column: "StudentId");
+
+			migrationBuilder.CreateIndex(
 				name: "IX_Students_ClassroomId",
 				table: "Students",
 				column: "ClassroomId");
@@ -425,10 +481,13 @@ namespace school_management_wpf_project.Migrations {
 				name: "LoggedInUsers");
 
 			migrationBuilder.DropTable(
-				name: "Courses");
+				name: "StudentClassrooms");
 
 			migrationBuilder.DropTable(
 				name: "Students");
+
+			migrationBuilder.DropTable(
+				name: "Courses");
 
 			migrationBuilder.DropTable(
 				name: "Subjects");

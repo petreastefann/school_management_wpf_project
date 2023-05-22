@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using school_management_wpf_project.Data;
+﻿using school_management_wpf_project.Data;
 using school_management_wpf_project.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,10 +26,7 @@ namespace school_management_wpf_project.DataAccessLayer {
 
 		public static List<Classroom> GetAll() {
 			if(_db.Classrooms.Count() > 0) {
-				return _db.Classrooms
-					.Include(c => c.StudyYearSpecialization)
-					.Include(c => c.HomeroomTeacher)
-					.ToList();
+				return _db.Classrooms.ToList();
 			}
 			return new List<Classroom>();
 		}

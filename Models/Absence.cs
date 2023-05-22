@@ -7,7 +7,7 @@ namespace school_management_wpf_project.Models {
 			get; set;
 		}
 
-		public Student Student {
+		public User Student {
 			get; set;
 		}
 

@@ -111,6 +111,10 @@ namespace school_management_wpf_project.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("StudentId");
+
                     b.ToTable("Averages");
                 });
 
@@ -308,6 +312,29 @@ namespace school_management_wpf_project.Migrations
                     b.ToTable("Students");
                 });
 
+            modelBuilder.Entity("school_management_wpf_project.Models.StudentClassroom", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClassroomId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassroomId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("StudentClassrooms");
+                });
+
             modelBuilder.Entity("school_management_wpf_project.Models.StudyYear", b =>
                 {
                     b.Property<int>("Id")
@@ -428,7 +455,7 @@ namespace school_management_wpf_project.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("school_management_wpf_project.Models.Student", "Student")
+                    b.HasOne("school_management_wpf_project.Models.User", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -441,7 +468,7 @@ namespace school_management_wpf_project.Migrations
 
             modelBuilder.Entity("school_management_wpf_project.Models.Attendance", b =>
                 {
-                    b.HasOne("school_management_wpf_project.Models.Student", "Student")
+                    b.HasOne("school_management_wpf_project.Models.User", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -456,6 +483,25 @@ namespace school_management_wpf_project.Migrations
                     b.Navigation("Student");
 
                     b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("school_management_wpf_project.Models.Average", b =>
+                {
+                    b.HasOne("school_management_wpf_project.Models.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("school_management_wpf_project.Models.User", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.Classroom", b =>
@@ -517,7 +563,7 @@ namespace school_management_wpf_project.Migrations
 
             modelBuilder.Entity("school_management_wpf_project.Models.Grade", b =>
                 {
-                    b.HasOne("school_management_wpf_project.Models.Student", "Student")
+                    b.HasOne("school_management_wpf_project.Models.User", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -543,6 +589,25 @@ namespace school_management_wpf_project.Migrations
                         .IsRequired();
 
                     b.Navigation("Classroom");
+                });
+
+            modelBuilder.Entity("school_management_wpf_project.Models.StudentClassroom", b =>
+                {
+                    b.HasOne("school_management_wpf_project.Models.Classroom", "Classroom")
+                        .WithMany()
+                        .HasForeignKey("ClassroomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("school_management_wpf_project.Models.User", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Classroom");
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.StudyYearSpecialization", b =>

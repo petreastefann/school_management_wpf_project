@@ -30,5 +30,12 @@ namespace school_management_wpf_project.DataAccessLayer {
 		public static Student GetStudentById(int id) {
 			return _db.Students.FirstOrDefault(s => s.Id == id);
 		}
+
+		public static List<User> GetAll() {
+			if(_db.Users.Count() > 0) {
+				return _db.Users.Where(u => u.Role == "student").ToList();
+			}
+			return new List<User>();
+		}
 	}
 }

@@ -50,6 +50,9 @@ namespace school_management_wpf_project.Data {
 		public DbSet<CourseStudyYearSpecialization> CourseStudyYearSpecializations {
 			get; set;
 		}
+		public DbSet<StudentClassroom> StudentClassrooms {
+			get; set;
+		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
 			optionsBuilder.UseSqlServer(GetConnectionString());

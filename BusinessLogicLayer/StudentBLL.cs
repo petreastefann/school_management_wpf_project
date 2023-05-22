@@ -23,5 +23,9 @@ namespace school_management_wpf_project.BusinessLogicLayer {
 		public static Student GetStudentById(int id) {
 			return StudentDAL.GetStudentById(id);
 		}
+
+		public static List<User> GetAll() {
+			return StudentDAL.GetAll();
+		}
 	}
 }

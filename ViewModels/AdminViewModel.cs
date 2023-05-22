@@ -31,15 +31,18 @@ namespace school_management_wpf_project.ViewModels {
 			AvailableStudyYears = new ObservableCollection<StudyYear>(StudyYearBLL.GetAll());
 			AvailableStudyYearSpecializations = new ObservableCollection<StudyYearSpecialization>(StudyYearSpecializationBLL.GetAll());
 			AvailableCourses = new ObservableCollection<Course>(CourseBLL.GetAll());
+			AvailableClassrooms = new ObservableCollection<Classroom>(ClassroomBLL.GetAll());
+			AvailableStudents = new ObservableCollection<User>(StudentBLL.GetAll());
 
 			// initialize commands
 			AddStudyYearCommand = new RelayCommand(AddStudyYear);
 			AddSpecializationCommand = new RelayCommand(AddSpecialization);
 			AddCourseCommand = new RelayCommand(AddCourse);
 			AddClassCommand = new RelayCommand(AddClass);
-			LinkStudyYearToSpecializationCommand = new RelayCommand(LinkStudyYearToSpecialization);
 			AddUserCommand = new RelayCommand(AddUser);
+			LinkStudyYearToSpecializationCommand = new RelayCommand(LinkStudyYearToSpecialization);
 			LinkCourseToStudyYearSpecializationCommand = new RelayCommand(LinkCourseToStudyYearSpecialization);
+			LinkStudentToClassroomCommand = new RelayCommand(LinkStudentToClassroom);
 		}
 
 		////////////////////////////////////////////	gets and sets
@@ -124,6 +127,14 @@ namespace school_management_wpf_project.ViewModels {
 			get; set;
 		}
 
+		public ObservableCollection<Classroom> AvailableClassrooms {
+			get; set;
+		}
+
+		public ObservableCollection<User> AvailableStudents {
+			get; set;
+		}
+
 		////////////////////////////////////////////	ICommands
 
 		public ICommand AddStudyYearCommand {
@@ -154,26 +165,30 @@ namespace school_management_wpf_project.ViewModels {
 			get;
 		}
 
+		public ICommand LinkStudentToClassroomCommand {
+			get;
+		}
+
 		////////////////////////////////////////////	Methods
 
 		private void AddStudyYear() {
 			StudyYearBLL.Add(StudyYear);
-			MessageBox.Show("Study year added successfully");
+			MessageBox.Show("study year added successfully");
 		}
 
 		private void AddSpecialization() {
 			SpecializationBLL.Add(Specialization);
-			MessageBox.Show("Specialization added successfully");
+			MessageBox.Show("specialization added successfully");
 		}
 
 		private void AddCourse() {
 			CourseBLL.Add(Course);
-			MessageBox.Show("Course added successfully");
+			MessageBox.Show("course added successfully");
 		}
 
 		private void AddClass() {
 			ClassroomBLL.Add(Classroom);
-			MessageBox.Show("Classroom added succesfully");
+			MessageBox.Show("classroom added succesfully");
 		}
 
 		private void LinkStudyYearToSpecialization() {
@@ -196,7 +211,16 @@ namespace school_management_wpf_project.ViewModels {
 
 		private void AddUser() {
 			UserBLL.Add(User);
-			MessageBox.Show("User added successfully");
+			MessageBox.Show("user added successfully");
+		}
+
+		private void LinkStudentToClassroom() {
+			StudentClassroom sc = new() {
+				Classroom = Classroom,
+				Student = User
+			};
+			StudentClassroomBLL.Add(sc);
+			MessageBox.Show("successfully linked student to classroom");
 		}
 	}
 }
