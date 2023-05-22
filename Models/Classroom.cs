@@ -9,10 +9,10 @@ namespace school_management_wpf_project.Models {
 		public string Name {
 			get; set;
 		}
-		public Specialization Specialization {
+		public StudyYearSpecialization StudyYearSpecialization {
 			get; set;
 		}
-		public HomeroomTeacher HomeroomTeacher {
+		public User HomeroomTeacher {
 			get; set;
 		}
 	}

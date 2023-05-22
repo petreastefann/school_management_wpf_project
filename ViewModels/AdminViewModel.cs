@@ -16,6 +16,7 @@ namespace school_management_wpf_project.ViewModels {
 		private Course _course;
 		private HomeroomTeacher _homeroomTeacher;
 		private StudyYearSpecialization _studyYearSpecialization;
+		private Classroom _classroom;
 
 		public AdminViewModel() {
 			// initialize members
@@ -23,12 +24,13 @@ namespace school_management_wpf_project.ViewModels {
 			StudyYear = new StudyYear();
 			Specialization = new Specialization();
 			Course = new Course();
+			Classroom = new Classroom();
+			RoleChoices = new List<string> { "student", "teacher", "admin" };
 			AvailableTeachers = new ObservableCollection<User>(TeacherBLL.GetAll());
 			AvailableSpecializations = new ObservableCollection<Specialization>(SpecializationBLL.GetAll());
 			AvailableStudyYears = new ObservableCollection<StudyYear>(StudyYearBLL.GetAll());
 			AvailableStudyYearSpecializations = new ObservableCollection<StudyYearSpecialization>(StudyYearSpecializationBLL.GetAll());
 			AvailableCourses = new ObservableCollection<Course>(CourseBLL.GetAll());
-			RoleChoices = new List<string> { "student", "teacher", "admin" };
 
 			// initialize commands
 			AddStudyYearCommand = new RelayCommand(AddStudyYear);
@@ -87,6 +89,14 @@ namespace school_management_wpf_project.ViewModels {
 			set {
 				SetProperty(ref _studyYearSpecialization, value);
 				OnPropertyChanged(nameof(StudyYearSpecialization));
+			}
+		}
+
+		public Classroom Classroom {
+			get => _classroom;
+			set {
+				SetProperty(ref _classroom, value);
+				OnPropertyChanged(nameof(Classroom));
 			}
 		}
 
@@ -162,10 +172,7 @@ namespace school_management_wpf_project.ViewModels {
 		}
 
 		private void AddClass() {
-			Classroom classroom = new() {
-				Specialization = Specialization
-			};
-			ClassroomBLL.Add(classroom);
+			ClassroomBLL.Add(Classroom);
 			MessageBox.Show("Classroom added succesfully");
 		}
 

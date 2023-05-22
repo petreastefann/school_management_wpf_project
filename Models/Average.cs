@@ -12,6 +12,5 @@
 		public int Grade {
 			get; set;
 		}
-
 	}
 }

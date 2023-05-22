@@ -20,7 +20,7 @@ namespace school_management_wpf_project.DataAccessLayer {
 			}
 
 			studyYearSpecialization.Name = $"{studyYearSpecialization.StudyYear.Name} + {studyYearSpecialization.Specialization.Name}";
-
+			studyYearSpecialization.Id = 0;
 			_db.StudyYearSpecializations.Add(studyYearSpecialization);
 			_db.SaveChanges();
 		}

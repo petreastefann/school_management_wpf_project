@@ -8,6 +8,7 @@ namespace school_management_wpf_project.DataAccessLayer {
 		private static SchoolDbContext _db = new SchoolDbContext();
 
 		public static void Add(StudyYear studyYear) {
+			studyYear.Id = 0;
 			_db.StudyYears.Add(studyYear);
 			_db.SaveChanges();
 		}

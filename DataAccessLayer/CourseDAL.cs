@@ -14,6 +14,7 @@ namespace school_management_wpf_project.DataAccessLayer {
 				course.HomeroomTeacher = homeroomTeacher;
 			}
 
+			course.Id = 0;
 			_db.Add(course);
 			_db.SaveChanges();
 		}

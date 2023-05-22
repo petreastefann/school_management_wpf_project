@@ -14,7 +14,7 @@
     <Grid>
         <TextBlock>
             <Run Text="welcome, "/>
-            <Run Text="{Binding User.Username}"/>
+            <Run Text="admin"/>
         </TextBlock>
         <TextBlock Text="ADMIN VIEW" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 

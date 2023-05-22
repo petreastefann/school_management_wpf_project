@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="AdminLinkStudentToClassroom" Height="450" Width="800">
     <Grid>
-        <TextBlock Text="AdminLinkStudentToClassroom" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="AdminLinkStudentToClassroom" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50"/>
+        
     </Grid>
 </Window>

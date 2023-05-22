@@ -12,8 +12,8 @@ using school_management_wpf_project.Data;
 namespace school_management_wpf_project.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    [Migration("20230522155217_23_05_22_18_52")]
-    partial class _23_05_22_18_52
+    [Migration("20230522181009_23_05_22_21_10")]
+    partial class _23_05_22_21_10
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -125,21 +125,26 @@ namespace school_management_wpf_project.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("HomeroomTeacherId")
+                    b.Property<int?>("HomeroomTeacherId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HomeroomTeacherId1")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SpecializationId")
+                    b.Property<int>("StudyYearSpecializationId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("HomeroomTeacherId");
 
-                    b.HasIndex("SpecializationId");
+                    b.HasIndex("HomeroomTeacherId1");
+
+                    b.HasIndex("StudyYearSpecializationId");
 
                     b.ToTable("Classrooms");
                 });
@@ -458,21 +463,25 @@ namespace school_management_wpf_project.Migrations
 
             modelBuilder.Entity("school_management_wpf_project.Models.Classroom", b =>
                 {
-                    b.HasOne("school_management_wpf_project.Models.HomeroomTeacher", "HomeroomTeacher")
+                    b.HasOne("school_management_wpf_project.Models.HomeroomTeacher", null)
                         .WithMany("Classrooms")
-                        .HasForeignKey("HomeroomTeacherId")
+                        .HasForeignKey("HomeroomTeacherId");
+
+                    b.HasOne("school_management_wpf_project.Models.User", "HomeroomTeacher")
+                        .WithMany()
+                        .HasForeignKey("HomeroomTeacherId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("school_management_wpf_project.Models.Specialization", "Specialization")
+                    b.HasOne("school_management_wpf_project.Models.StudyYearSpecialization", "StudyYearSpecialization")
                         .WithMany()
-                        .HasForeignKey("SpecializationId")
+                        .HasForeignKey("StudyYearSpecializationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("HomeroomTeacher");
 
-                    b.Navigation("Specialization");
+                    b.Navigation("StudyYearSpecialization");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.Course", b =>
