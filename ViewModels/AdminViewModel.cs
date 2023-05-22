@@ -147,12 +147,12 @@ namespace school_management_wpf_project.ViewModels {
 		}
 
 		private void LinkStudyYearToSpecialization() {
-			/*			StudyYearSpecialization s = new StudyYearSpecialization() {
-							StudyYearId = StudyYear.Id,
-							SpecializationId = Specialization.Id
-						};
-						StudyYearSpecializationBLL.Add(s);
-						MessageBox.Show("succesfully linked the study year to the specialization");*/
+			StudyYearSpecialization s = new StudyYearSpecialization() {
+				StudyYear = StudyYear,
+				Specialization = Specialization
+			};
+			StudyYearSpecializationBLL.Add(s);
+			MessageBox.Show("succesfully linked the study year to the specialization");
 		}
 
 		private void AddUser() {

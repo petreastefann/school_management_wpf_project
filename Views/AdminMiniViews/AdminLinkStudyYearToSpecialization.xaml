@@ -24,6 +24,8 @@
                           DisplayMemberPath="Name"></ComboBox>
             </DockPanel>
             <Button Command="{Binding LinkStudyYearToSpecializationCommand}">Link</Button>
+
+            <Button Content="close" Margin="10" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>

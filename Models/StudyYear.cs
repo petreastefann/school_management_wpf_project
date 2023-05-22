@@ -13,7 +13,10 @@ namespace school_management_wpf_project.Models {
 		public int Year {
 			get; set;
 		}
-		public List<Specialization> Specializations {
+		public List<StudyYearSpecialization> StudyYearSpecializations {
+			get; set;
+		}
+		public List<CourseStudyYearSpecialization> CourseStudyYearSpecializations {
 			get; set;
 		}
 	}

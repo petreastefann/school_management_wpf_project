@@ -55,12 +55,12 @@ namespace school_management_wpf_project.Views {
 			adminLinkStudyYearToSpecialization.Show();
 		}
 
-		private void OpenClassToStudyYear(object sender, RoutedEventArgs e) {
-			AdminLinkClassToStudyYear adminLinkClassToStudyYear = new() {
+		private void OpenCourseToStudyYear(object sender, RoutedEventArgs e) {
+			AdminLinkCourseToStudyYear adminLinkCourseToStudyYear = new() {
 				DataContext = this.DataContext
 			};
 
-			adminLinkClassToStudyYear.Show();
+			adminLinkCourseToStudyYear.Show();
 		}
 
 		private void OpenLinkStudentToClass(object sender, RoutedEventArgs e) {

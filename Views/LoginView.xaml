@@ -11,7 +11,7 @@
         <vms:LoginViewModel/>
     </Window.DataContext>
     <Grid>
-        <StackPanel>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="100">
             <TextBlock Text="username: "/>
             <TextBox Text="{Binding Username}"/>
             <TextBlock Text="password: "/>

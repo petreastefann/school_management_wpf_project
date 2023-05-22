@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using school_management_wpf_project.Data;
 
@@ -11,9 +12,11 @@ using school_management_wpf_project.Data;
 namespace school_management_wpf_project.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    partial class SchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230522134104_23_05_22_16_39")]
+    partial class _23_05_22_16_39
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,34 +174,6 @@ namespace school_management_wpf_project.Migrations
                     b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("school_management_wpf_project.Models.CourseStudyYearSpecialization", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StudyYearId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudyYearSpecializationsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("StudyYearId");
-
-                    b.HasIndex("StudyYearSpecializationsId");
-
-                    b.ToTable("CourseStudyYearSpecializations");
-                });
-
             modelBuilder.Entity("school_management_wpf_project.Models.Grade", b =>
                 {
                     b.Property<int>("Id")
@@ -277,7 +252,12 @@ namespace school_management_wpf_project.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("StudyYearId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("StudyYearId");
 
                     b.ToTable("Specializations");
                 });
@@ -488,29 +468,6 @@ namespace school_management_wpf_project.Migrations
                     b.Navigation("HomeroomTeacher");
                 });
 
-            modelBuilder.Entity("school_management_wpf_project.Models.CourseStudyYearSpecialization", b =>
-                {
-                    b.HasOne("school_management_wpf_project.Models.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("school_management_wpf_project.Models.StudyYear", null)
-                        .WithMany("CourseStudyYearSpecializations")
-                        .HasForeignKey("StudyYearId");
-
-                    b.HasOne("school_management_wpf_project.Models.StudyYearSpecialization", "StudyYearSpecializations")
-                        .WithMany()
-                        .HasForeignKey("StudyYearSpecializationsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
-
-                    b.Navigation("StudyYearSpecializations");
-                });
-
             modelBuilder.Entity("school_management_wpf_project.Models.Grade", b =>
                 {
                     b.HasOne("school_management_wpf_project.Models.Student", "Student")
@@ -530,6 +487,13 @@ namespace school_management_wpf_project.Migrations
                     b.Navigation("Subject");
                 });
 
+            modelBuilder.Entity("school_management_wpf_project.Models.Specialization", b =>
+                {
+                    b.HasOne("school_management_wpf_project.Models.StudyYear", null)
+                        .WithMany("Specializations")
+                        .HasForeignKey("StudyYearId");
+                });
+
             modelBuilder.Entity("school_management_wpf_project.Models.Student", b =>
                 {
                     b.HasOne("school_management_wpf_project.Models.Classroom", "Classroom")
@@ -544,13 +508,13 @@ namespace school_management_wpf_project.Migrations
             modelBuilder.Entity("school_management_wpf_project.Models.StudyYearSpecialization", b =>
                 {
                     b.HasOne("school_management_wpf_project.Models.Specialization", "Specialization")
-                        .WithMany("StudyYearSpecialization")
+                        .WithMany()
                         .HasForeignKey("SpecializationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("school_management_wpf_project.Models.StudyYear", "StudyYear")
-                        .WithMany("StudyYearSpecializations")
+                        .WithMany()
                         .HasForeignKey("StudyYearId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -565,16 +529,9 @@ namespace school_management_wpf_project.Migrations
                     b.Navigation("Classrooms");
                 });
 
-            modelBuilder.Entity("school_management_wpf_project.Models.Specialization", b =>
-                {
-                    b.Navigation("StudyYearSpecialization");
-                });
-
             modelBuilder.Entity("school_management_wpf_project.Models.StudyYear", b =>
                 {
-                    b.Navigation("CourseStudyYearSpecializations");
-
-                    b.Navigation("StudyYearSpecializations");
+                    b.Navigation("Specializations");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.StudyYearSpecialization", b =>

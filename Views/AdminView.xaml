@@ -25,7 +25,7 @@
             <Button Click="OpenStudyYear" Margin="5" Width="150" Height="40">Add Study year</Button>
             <Button Click="OpenCourse" Margin="5" Width="150" Height="40">Add Course</Button>
             <Button Click="OpenLinkStudentToClass" Margin="5" Width="150" Height="40">Link student to class</Button>
-            <Button Click="OpenClassToStudyYear" Margin="5" Width="150" Height="40">Link Course And Study Year Specilaization</Button>
+            <Button Click="OpenCourseToStudyYear" Margin="5" Width="150" Height="40">Link Course And Study Year Specilaization</Button>
             <Button Click="OpenStudyYearToSpecialization" Margin="5" Width="150" Height="40">Link Study Year and Specialization</Button>
         </StackPanel>
     </Grid>

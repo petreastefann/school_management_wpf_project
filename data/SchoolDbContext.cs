@@ -44,6 +44,12 @@ namespace school_management_wpf_project.Data {
 		public DbSet<LoggedInUser> LoggedInUsers {
 			get; set;
 		}
+		public DbSet<StudyYearSpecialization> StudyYearSpecializations {
+			get; set;
+		}
+		public DbSet<CourseStudyYearSpecialization> CourseStudyYearSpecializations {
+			get; set;
+		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
 			optionsBuilder.UseSqlServer(GetConnectionString());
