@@ -11,3 +11,10 @@ namespace school_management_wpf_project.DataAccessLayer {
 		}
 	}
 }
+/*
+ SqlException: Cannot insert explicit value for identity column in table 'Specializations' when IDENTITY_INSERT is set to OFF.
+Cannot insert explicit value for identity column in table 'StudyYears' when IDENTITY_INSERT is set to OFF.
+Cannot insert explicit value for identity column in table 'Users' when IDENTITY_INSERT is set to OFF.
+Cannot insert explicit value for identity column in table 'Courses' when IDENTITY_INSERT is set to OFF.
+Cannot insert explicit value for identity column in table 'StudyYearSpecializations' when IDENTITY_INSERT is set to OFF.
+ */

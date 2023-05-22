@@ -6,16 +6,9 @@ namespace school_management_wpf_project.DataAccessLayer {
 		private static SchoolDbContext _db = new SchoolDbContext();
 
 		public static void Add(User user) {
-			/*
-						_db.Database.ExecuteSqlRaw($"InsertUser @firstName, @lastName, @email, @role, @password",
-								new SqlParameter("@firstName", user.FirstName),
-								new SqlParameter("@lastName", user.LastName),
-								new SqlParameter("@email", user.Email),
-								new SqlParameter("@password", user.Password),
-								new SqlParameter("@role", user.Role)
-								);
-
-						_db.SaveChanges();*/
+			user.Id = 0;
+			_db.Users.Add(user);
+			_db.SaveChanges();
 		}
 	}
 }

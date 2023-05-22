@@ -25,6 +25,8 @@
                 </ComboBox>
             </DockPanel>
             <Button Command="{Binding AddClassCommand}">Add</Button>
+
+            <Button Content="Close" Margin="10" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>

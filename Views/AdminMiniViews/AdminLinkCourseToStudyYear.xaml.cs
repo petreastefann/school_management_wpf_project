@@ -8,5 +8,9 @@ namespace school_management_wpf_project.Views.AdminMiniViews {
 		public AdminLinkCourseToStudyYear() {
 			InitializeComponent();
 		}
+
+		private void Button_Click(object sender, RoutedEventArgs e) {
+			Close();
+		}
 	}
 }

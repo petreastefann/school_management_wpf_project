@@ -12,8 +12,8 @@ using school_management_wpf_project.Data;
 namespace school_management_wpf_project.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    [Migration("20230522144509_23_05_22_17_45")]
-    partial class _23_05_22_17_45
+    [Migration("20230522155217_23_05_22_18_52")]
+    partial class _23_05_22_18_52
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -333,6 +333,10 @@ namespace school_management_wpf_project.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SpecializationId")
                         .HasColumnType("int");

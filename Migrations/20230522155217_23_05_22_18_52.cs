@@ -5,7 +5,7 @@
 namespace school_management_wpf_project.Migrations
 {
     /// <inheritdoc />
-    public partial class _23_05_22_17_45 : Migration
+    public partial class _23_05_22_18_52 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -142,6 +142,7 @@ namespace school_management_wpf_project.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StudyYearId = table.Column<int>(type: "int", nullable: false),
                     SpecializationId = table.Column<int>(type: "int", nullable: false)
                 },

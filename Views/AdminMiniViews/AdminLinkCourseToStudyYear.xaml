@@ -14,16 +14,20 @@
             <DockPanel>
                 <Label>Study year specialization:</Label>
                 <ComboBox ItemsSource="{Binding AvailableStudyYearSpecializations}"
-                          SelectedItem="{Binding StudyYearSpecialization}">
+                          SelectedItem="{Binding StudyYearSpecialization}"
+                          DisplayMemberPath="Name">
                 </ComboBox>
             </DockPanel>
             <DockPanel>
                 <Label>Course:</Label>
                 <ComboBox ItemsSource="{Binding AvailableCourses}"
-                          SelectedItem="{Binding Course}">
+                          SelectedItem="{Binding Course}"
+                          DisplayMemberPath="Name">
                 </ComboBox>
             </DockPanel>
             <Button Command="{Binding LinkCourseToStudyYearSpecializationCommand}">Link</Button>
+
+            <Button Content="close" Margin="10" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>

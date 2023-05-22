@@ -27,7 +27,7 @@
                 </ComboBox>
             </DockPanel>
             <Button Command="{Binding AddCourseCommand}">Add</Button>
-            <Button Click="Close">Close</Button>
+            <Button Click="Close" Margin="10">Close</Button>
         </StackPanel>
     </Grid>
 </Window>

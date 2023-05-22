@@ -19,9 +19,12 @@ namespace school_management_wpf_project.DataAccessLayer {
 				studyYearSpecialization.Specialization = specialization;
 			}
 
+			studyYearSpecialization.Name = $"{studyYearSpecialization.StudyYear.Name} + {studyYearSpecialization.Specialization.Name}";
+
 			_db.StudyYearSpecializations.Add(studyYearSpecialization);
 			_db.SaveChanges();
 		}
+
 		public static List<StudyYearSpecialization> GetAll() {
 			if(_db.StudyYearSpecializations.Count() > 0)
 				return _db.StudyYearSpecializations

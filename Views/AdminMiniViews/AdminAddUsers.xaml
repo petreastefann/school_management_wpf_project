@@ -10,9 +10,9 @@
     <Grid>
         <TextBlock Text="AdminAddUsers" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50"/>
 
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="140">
             <DockPanel>
-                <Label>Password:</Label>
+                <Label>Username:</Label>
                 <TextBox Text="{Binding User.Username}"></TextBox>
             </DockPanel>
             <DockPanel>
@@ -35,6 +35,8 @@
             </DockPanel>
 
             <Button Command="{Binding AddUserCommand}">Add</Button>
+
+            <Button Content="close" Margin="10" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>

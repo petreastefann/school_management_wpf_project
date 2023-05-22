@@ -6,6 +6,9 @@ namespace school_management_wpf_project.Models {
 		public int Id {
 			get; set;
 		}
+		public string Name {
+			get; set;
+		}
 		public StudyYear StudyYear {
 			get; set;
 		}
