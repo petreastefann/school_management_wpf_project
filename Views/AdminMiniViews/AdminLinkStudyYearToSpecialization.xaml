@@ -3,12 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:school_management_wpf_project.Views.AdminMiniViews"
+        xmlns:local="clr-namespace:school_management_wpf_project.Views.AdminMiniViews" 
+        xmlns:viewmodels="clr-namespace:school_management_wpf_project.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AdminViewModel}"
         mc:Ignorable="d"
         Title="AdminLinkStudyYearToSpecialization" Height="450" Width="800">
     <Grid>
-        <TextBlock Text="AdminLinkStudyYearToSpecialization" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        
-        
+        <TextBlock Text="AdminLinkStudyYearToSpecialization" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50"/>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <DockPanel>
+                <Label>Study year:</Label>
+                <ComboBox ItemsSource="{Binding AvailableStudyYears}"
+                          SelectedItem="{Binding StudyYear}"
+                          DisplayMemberPath="Name"></ComboBox>
+            </DockPanel>
+            <DockPanel>
+                <Label>Specialization:</Label>
+                <ComboBox ItemsSource="{Binding AvailableSpecializations}"
+                          SelectedItem="{Binding Specialization}"
+                          DisplayMemberPath="Name"></ComboBox>
+            </DockPanel>
+            <Button Command="{Binding LinkStudyYearToSpecializationCommand}">Link</Button>
+        </StackPanel>
     </Grid>
 </Window>

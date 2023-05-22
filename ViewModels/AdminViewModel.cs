@@ -23,13 +23,17 @@ namespace school_management_wpf_project.ViewModels {
 			Course = new Course();
 			AvailableTeachers = new ObservableCollection<User>(TeacherBLL.GetAll());
 			AvailableSpecializations = new ObservableCollection<Specialization>(SpecializationBLL.GetAll());
+			AvailableStudyYears = new ObservableCollection<StudyYear>(StudyYearBLL.GetAll());
 
 			// initialize commands
 			AddStudyYearCommand = new RelayCommand(AddStudyYear);
 			AddSpecializationCommand = new RelayCommand(AddSpecialization);
 			AddCourseCommand = new RelayCommand(AddCourse);
 			AddClassCommand = new RelayCommand(AddClass);
+			LinkStudyYearToSpecializationCommand = new RelayCommand(LinkStudyYearToSpecialization);
 		}
+
+		////////////////////////////////////////////	gets and sets
 
 		public User User {
 			get => _user;
@@ -79,6 +83,10 @@ namespace school_management_wpf_project.ViewModels {
 			get; set;
 		}
 
+		public ObservableCollection<StudyYear> AvailableStudyYears {
+			get; set;
+		}
+
 		////////////////////////////////////////////	ICommands
 
 		public ICommand AddStudyYearCommand {
@@ -94,6 +102,10 @@ namespace school_management_wpf_project.ViewModels {
 		}
 
 		public ICommand AddClassCommand {
+			get;
+		}
+
+		public ICommand LinkStudyYearToSpecializationCommand {
 			get;
 		}
 
@@ -121,6 +133,15 @@ namespace school_management_wpf_project.ViewModels {
 			};
 			ClassroomBLL.Add(classroom);
 			MessageBox.Show("Added succesfully");
+		}
+
+		private void LinkStudyYearToSpecialization() {
+			/*			StudyYearSpecialization s = new StudyYearSpecialization() {
+							StudyYearId = StudyYear.Id,
+							SpecializationId = Specialization.Id
+						};
+						StudyYearSpecializationBLL.Add(s);
+						MessageBox.Show("Added successfully!");*/
 		}
 	}
 }
