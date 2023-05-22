@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="school_management_wpf_project.Views.StudentView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:school_management_wpf_project.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<Window x:Class="school_management_wpf_project.Views.StudentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:school_management_wpf_project.Views"
+        mc:Ignorable="d"
+        Title="StudentView" Height="450" Width="800">
     <Grid>
         <TextBlock>
             <Run Text="welcome, "/>
@@ -15,7 +15,7 @@
 
         <Button Content="teaching material" Height="30" Width="100" Margin="0,300,560,0" Click="StudentSeeTeachingMaterial"/>
         <Button Content="all grades" Height="30" Width="100" Margin="0,300,260,0" Click="StudentSeeGrades"/>
-        <Button Content="all absente" Height="30" Width="100" Margin="0,300,0,0" Click="StudentSeeAbsences"/>
+        <Button Content="all absences" Height="30" Width="100" Margin="0,300,0,0" Click="StudentSeeAbsences"/>
         <Button Content="all averages" Height="30" Width="100" Margin="300,300,0,0" Click="StudentSeeAverages"/>
     </Grid>
-</UserControl>
+</Window>

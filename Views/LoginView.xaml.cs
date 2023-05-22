@@ -24,11 +24,11 @@ namespace school_management_wpf_project.Views {
 					}
 					else if(loggedInUserRole == "teacher") {
 						TeacherView teacherView = new TeacherView();
-						//teacherView.Show();
+						teacherView.Show();
 					}
 					else if(loggedInUserRole == "student") {
 						StudentView studentView = new StudentView();
-						//studentView.Show();
+						studentView.Show();
 					}
 
 					Close();
