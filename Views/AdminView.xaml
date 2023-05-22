@@ -16,7 +16,7 @@
             <Run Text="welcome, "/>
             <Run Text="{Binding User.Username}"/>
         </TextBlock>
-        <TextBlock Text="ADMIN VIEW" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="ADMIN VIEW" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
         <StackPanel>
             <Button Click="OpenClass" Margin="5" Width="150" Height="40">Add Class</Button>
