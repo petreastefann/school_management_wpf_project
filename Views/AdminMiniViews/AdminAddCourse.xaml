@@ -8,5 +8,25 @@
         Title="AdminAddCourse" Height="450" Width="800">
     <Grid>
         <TextBlock Text="AdminAddCourse" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,300,0">
+            <DockPanel>
+                <Label>Name:</Label>
+                <TextBox Text="{Binding Course.Name}"></TextBox>
+            </DockPanel>
+            <DockPanel>
+                <Label>Has final exam:</Label>
+                <CheckBox IsChecked="{Binding Course.HasFinalExam}"></CheckBox>
+            </DockPanel>
+            <DockPanel>
+                <Label>Teacher:</Label>
+                <ComboBox ItemsSource="{Binding AvailableTeachers}"
+                          SelectedItem="{Binding Course.HomeroomTeacher}"
+                          DisplayMemberPath="Username">
+                </ComboBox>
+            </DockPanel>
+            <Button Command="{Binding AddCourseCommand}">Add</Button>
+            <Button Click="Close">Close</Button>
+        </StackPanel>
     </Grid>
 </Window>

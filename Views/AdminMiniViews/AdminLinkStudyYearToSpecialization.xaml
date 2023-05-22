@@ -8,5 +8,7 @@
         Title="AdminLinkStudyYearToSpecialization" Height="450" Width="800">
     <Grid>
         <TextBlock Text="AdminLinkStudyYearToSpecialization" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        
+        
     </Grid>
 </Window>

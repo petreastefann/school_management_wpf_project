@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using school_management_wpf_project.Data;
 
@@ -11,9 +12,11 @@ using school_management_wpf_project.Data;
 namespace school_management_wpf_project.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    partial class SchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230521193514_23_05_21_22_35")]
+    partial class _23_05_21_22_35
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -454,12 +457,17 @@ namespace school_management_wpf_project.Migrations
             modelBuilder.Entity("school_management_wpf_project.Models.Student", b =>
                 {
                     b.HasOne("school_management_wpf_project.Models.Classroom", "Classroom")
-                        .WithMany()
+                        .WithMany("Students")
                         .HasForeignKey("ClassroomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Classroom");
+                });
+
+            modelBuilder.Entity("school_management_wpf_project.Models.Classroom", b =>
+                {
+                    b.Navigation("Students");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.HomeroomTeacher", b =>

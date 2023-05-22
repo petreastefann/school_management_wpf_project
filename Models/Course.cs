@@ -6,10 +6,10 @@
 		public string Name {
 			get; set;
 		}
-		public Specialization Specialization {
+		public bool HasFinalExam {
 			get; set;
 		}
-		public Teacher Teacher {
+		public User HomeroomTeacher {   // TODO
 			get; set;
 		}
 	}

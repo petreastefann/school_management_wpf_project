@@ -12,8 +12,8 @@ using school_management_wpf_project.Data;
 namespace school_management_wpf_project.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    [Migration("20230521180917_21_05_23_21_09")]
-    partial class _21_05_23_21_09
+    [Migration("20230522110704_23_05_22_14_05")]
+    partial class _23_05_22_14_05
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,19 +25,19 @@ namespace school_management_wpf_project.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SubjectTeacher", b =>
+            modelBuilder.Entity("HomeroomTeacherSubject", b =>
                 {
+                    b.Property<int>("HomeroomTeachersId")
+                        .HasColumnType("int");
+
                     b.Property<int>("SubjectsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TeachersId")
-                        .HasColumnType("int");
+                    b.HasKey("HomeroomTeachersId", "SubjectsId");
 
-                    b.HasKey("SubjectsId", "TeachersId");
+                    b.HasIndex("SubjectsId");
 
-                    b.HasIndex("TeachersId");
-
-                    b.ToTable("SubjectTeacher");
+                    b.ToTable("HomeroomTeacherSubject");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.Absence", b =>
@@ -125,10 +125,7 @@ namespace school_management_wpf_project.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ClassroomTeacherId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("HomeroomTeacherId")
+                    b.Property<int>("HomeroomTeacherId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -138,41 +135,13 @@ namespace school_management_wpf_project.Migrations
                     b.Property<int>("SpecializationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ClassroomTeacherId");
 
                     b.HasIndex("HomeroomTeacherId");
 
                     b.HasIndex("SpecializationId");
 
-                    b.HasIndex("TeacherId");
-
                     b.ToTable("Classrooms");
-                });
-
-            modelBuilder.Entity("school_management_wpf_project.Models.ClassroomTeacher", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ClassroomTeachers");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.Course", b =>
@@ -183,21 +152,19 @@ namespace school_management_wpf_project.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("HasFinalExam")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("HomeroomTeacherId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SpecializationId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("SpecializationId");
-
-                    b.HasIndex("TeacherId");
+                    b.HasIndex("HomeroomTeacherId");
 
                     b.ToTable("Courses");
                 });
@@ -239,9 +206,6 @@ namespace school_management_wpf_project.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClassroomId")
-                        .HasColumnType("int");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -251,8 +215,6 @@ namespace school_management_wpf_project.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClassroomId");
 
                     b.ToTable("HomeroomTeachers");
                 });
@@ -349,44 +311,13 @@ namespace school_management_wpf_project.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ClassroomTeacherId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("HomeroomTeacherId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClassroomTeacherId");
-
-                    b.HasIndex("HomeroomTeacherId");
-
                     b.ToTable("Subjects");
-                });
-
-            modelBuilder.Entity("school_management_wpf_project.Models.Teacher", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Teacher");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.User", b =>
@@ -414,17 +345,17 @@ namespace school_management_wpf_project.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("SubjectTeacher", b =>
+            modelBuilder.Entity("HomeroomTeacherSubject", b =>
                 {
-                    b.HasOne("school_management_wpf_project.Models.Subject", null)
+                    b.HasOne("school_management_wpf_project.Models.HomeroomTeacher", null)
                         .WithMany()
-                        .HasForeignKey("SubjectsId")
+                        .HasForeignKey("HomeroomTeachersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("school_management_wpf_project.Models.Teacher", null)
+                    b.HasOne("school_management_wpf_project.Models.Subject", null)
                         .WithMany()
-                        .HasForeignKey("TeachersId")
+                        .HasForeignKey("SubjectsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -469,48 +400,32 @@ namespace school_management_wpf_project.Migrations
 
             modelBuilder.Entity("school_management_wpf_project.Models.Classroom", b =>
                 {
-                    b.HasOne("school_management_wpf_project.Models.ClassroomTeacher", null)
+                    b.HasOne("school_management_wpf_project.Models.HomeroomTeacher", "HomeroomTeacher")
                         .WithMany("Classrooms")
-                        .HasForeignKey("ClassroomTeacherId");
-
-                    b.HasOne("school_management_wpf_project.Models.HomeroomTeacher", null)
-                        .WithMany("Classrooms")
-                        .HasForeignKey("HomeroomTeacherId");
+                        .HasForeignKey("HomeroomTeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("school_management_wpf_project.Models.Specialization", "Specialization")
-                        .WithMany("Classrooms")
+                        .WithMany()
                         .HasForeignKey("SpecializationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("school_management_wpf_project.Models.Teacher", "Teacher")
-                        .WithMany("Classrooms")
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("HomeroomTeacher");
 
                     b.Navigation("Specialization");
-
-                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.Course", b =>
                 {
-                    b.HasOne("school_management_wpf_project.Models.Specialization", "Specialization")
+                    b.HasOne("school_management_wpf_project.Models.User", "HomeroomTeacher")
                         .WithMany()
-                        .HasForeignKey("SpecializationId")
+                        .HasForeignKey("HomeroomTeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("school_management_wpf_project.Models.Teacher", "Teacher")
-                        .WithMany()
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Specialization");
-
-                    b.Navigation("Teacher");
+                    b.Navigation("HomeroomTeacher");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.Grade", b =>
@@ -532,17 +447,6 @@ namespace school_management_wpf_project.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("school_management_wpf_project.Models.HomeroomTeacher", b =>
-                {
-                    b.HasOne("school_management_wpf_project.Models.Classroom", "Classroom")
-                        .WithMany()
-                        .HasForeignKey("ClassroomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Classroom");
-                });
-
             modelBuilder.Entity("school_management_wpf_project.Models.Specialization", b =>
                 {
                     b.HasOne("school_management_wpf_project.Models.StudyYear", null)
@@ -553,7 +457,7 @@ namespace school_management_wpf_project.Migrations
             modelBuilder.Entity("school_management_wpf_project.Models.Student", b =>
                 {
                     b.HasOne("school_management_wpf_project.Models.Classroom", "Classroom")
-                        .WithMany("Students")
+                        .WithMany()
                         .HasForeignKey("ClassroomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -561,37 +465,7 @@ namespace school_management_wpf_project.Migrations
                     b.Navigation("Classroom");
                 });
 
-            modelBuilder.Entity("school_management_wpf_project.Models.Subject", b =>
-                {
-                    b.HasOne("school_management_wpf_project.Models.ClassroomTeacher", null)
-                        .WithMany("Subjects")
-                        .HasForeignKey("ClassroomTeacherId");
-
-                    b.HasOne("school_management_wpf_project.Models.HomeroomTeacher", null)
-                        .WithMany("Subjects")
-                        .HasForeignKey("HomeroomTeacherId");
-                });
-
-            modelBuilder.Entity("school_management_wpf_project.Models.Classroom", b =>
-                {
-                    b.Navigation("Students");
-                });
-
-            modelBuilder.Entity("school_management_wpf_project.Models.ClassroomTeacher", b =>
-                {
-                    b.Navigation("Classrooms");
-
-                    b.Navigation("Subjects");
-                });
-
             modelBuilder.Entity("school_management_wpf_project.Models.HomeroomTeacher", b =>
-                {
-                    b.Navigation("Classrooms");
-
-                    b.Navigation("Subjects");
-                });
-
-            modelBuilder.Entity("school_management_wpf_project.Models.Specialization", b =>
                 {
                     b.Navigation("Classrooms");
                 });
@@ -599,11 +473,6 @@ namespace school_management_wpf_project.Migrations
             modelBuilder.Entity("school_management_wpf_project.Models.StudyYear", b =>
                 {
                     b.Navigation("Specializations");
-                });
-
-            modelBuilder.Entity("school_management_wpf_project.Models.Teacher", b =>
-                {
-                    b.Navigation("Classrooms");
                 });
 #pragma warning restore 612, 618
         }

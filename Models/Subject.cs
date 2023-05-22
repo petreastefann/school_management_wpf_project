@@ -10,7 +10,7 @@ namespace school_management_wpf_project.Models {
 		public string Name {
 			get; set;
 		}
-		public List<Teacher> Teachers {
+		public List<HomeroomTeacher> HomeroomTeachers {
 			get; set;
 		}
 	}

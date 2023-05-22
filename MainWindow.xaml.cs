@@ -11,6 +11,7 @@ namespace school_management_wpf_project {
 			LoginView loginView = new LoginView();
 
 			loginView.Show();
+			Close();
 		}
 
 		/*private void RegisterClick(object sender, RoutedEventArgs e) {

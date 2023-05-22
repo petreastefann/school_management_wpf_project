@@ -23,9 +23,6 @@ namespace school_management_wpf_project.Data {
 		public DbSet<Subject> Subjects {
 			get; set;
 		}
-		public DbSet<ClassroomTeacher> ClassroomTeachers {
-			get; set;
-		}
 		public DbSet<HomeroomTeacher> HomeroomTeachers {
 			get; set;
 		}

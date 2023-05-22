@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using school_management_wpf_project.BusinessLogicLayer;
 using school_management_wpf_project.Models;
 using school_management_wpf_project.Services;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -11,17 +12,23 @@ namespace school_management_wpf_project.ViewModels {
 		private User _user;
 		private StudyYear _studyYear;
 		private Specialization _specialization;
+		private Course _course;
+		private HomeroomTeacher _homeroomTeacher;
 
 		public AdminViewModel() {
 			// initialize members
 			User = UserService.GetLoggedInUser();
 			StudyYear = new StudyYear();
 			Specialization = new Specialization();
+			Course = new Course();
+			AvailableTeachers = new ObservableCollection<User>(TeacherBLL.GetAll());
+			AvailableSpecializations = new ObservableCollection<Specialization>(SpecializationBLL.GetAll());
 
 			// initialize commands
 			AddStudyYearCommand = new RelayCommand(AddStudyYear);
 			AddSpecializationCommand = new RelayCommand(AddSpecialization);
-
+			AddCourseCommand = new RelayCommand(AddCourse);
+			AddClassCommand = new RelayCommand(AddClass);
 		}
 
 		public User User {
@@ -48,6 +55,30 @@ namespace school_management_wpf_project.ViewModels {
 			}
 		}
 
+		public Course Course {
+			get => _course;
+			set {
+				SetProperty(ref _course, value);
+				OnPropertyChanged(nameof(Course));
+			}
+		}
+
+		public HomeroomTeacher HomeroomTeacher {
+			get => _homeroomTeacher;
+			set {
+				SetProperty(ref _homeroomTeacher, value);
+				OnPropertyChanged(nameof(HomeroomTeacher));
+			}
+		}
+
+		public ObservableCollection<User> AvailableTeachers {
+			get; set;
+		}
+
+		public ObservableCollection<Specialization> AvailableSpecializations {
+			get; set;
+		}
+
 		////////////////////////////////////////////	ICommands
 
 		public ICommand AddStudyYearCommand {
@@ -55,6 +86,14 @@ namespace school_management_wpf_project.ViewModels {
 		}
 
 		public ICommand AddSpecializationCommand {
+			get;
+		}
+
+		public ICommand AddCourseCommand {
+			get;
+		}
+
+		public ICommand AddClassCommand {
 			get;
 		}
 
@@ -68,6 +107,20 @@ namespace school_management_wpf_project.ViewModels {
 		private void AddSpecialization() {
 			SpecializationBLL.Add(Specialization);
 			MessageBox.Show("Specialization added successfully");
+		}
+
+		private void AddCourse() {
+			Course.HomeroomTeacher = User;
+			CourseBLL.Add(Course);
+			MessageBox.Show("Added successfully");
+		}
+
+		private void AddClass() {
+			Classroom classroom = new Classroom {
+				Specialization = Specialization
+			};
+			ClassroomBLL.Add(classroom);
+			MessageBox.Show("Added succesfully");
 		}
 	}
 }

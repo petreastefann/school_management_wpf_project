@@ -13,9 +13,6 @@ namespace school_management_wpf_project.Models {
 		public string LastName {
 			get; set;
 		}
-		public Classroom Classroom {
-			get; set;
-		}
 		public List<Subject> Subjects {
 			get; set;
 		}

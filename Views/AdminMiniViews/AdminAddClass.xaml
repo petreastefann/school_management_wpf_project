@@ -8,5 +8,22 @@
         Title="AdminAddClass" Height="450" Width="800">
     <Grid>
         <TextBlock Text="AdminAddClass" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,300,0">
+            <DockPanel>
+                <Label>
+                    Add class:
+                </Label>
+                <ComboBox ItemsSource="{Binding AvailableSpecializations}"
+                          SelectedItem="{Binding Specialization}">
+                    <!--<ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Converter={StaticResource ConvertorForAll}}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>-->
+                </ComboBox>
+            </DockPanel>
+            <Button Command="{Binding AddClassCommand}">Add</Button>
+        </StackPanel>
     </Grid>
 </Window>
