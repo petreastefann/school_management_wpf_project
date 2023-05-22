@@ -159,14 +159,9 @@ namespace school_management_wpf_project.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StudyYearSpecializationId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("HomeroomTeacherId");
-
-                    b.HasIndex("StudyYearSpecializationId");
 
                     b.ToTable("Courses");
                 });
@@ -185,7 +180,7 @@ namespace school_management_wpf_project.Migrations
                     b.Property<int?>("StudyYearId")
                         .HasColumnType("int");
 
-                    b.Property<int>("StudyYearSpecializationsId")
+                    b.Property<int>("StudyYearSpecializationId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -194,7 +189,7 @@ namespace school_management_wpf_project.Migrations
 
                     b.HasIndex("StudyYearId");
 
-                    b.HasIndex("StudyYearSpecializationsId");
+                    b.HasIndex("StudyYearSpecializationId");
 
                     b.ToTable("CourseStudyYearSpecializations");
                 });
@@ -481,10 +476,6 @@ namespace school_management_wpf_project.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("school_management_wpf_project.Models.StudyYearSpecialization", null)
-                        .WithMany("Courses")
-                        .HasForeignKey("StudyYearSpecializationId");
-
                     b.Navigation("HomeroomTeacher");
                 });
 
@@ -500,15 +491,15 @@ namespace school_management_wpf_project.Migrations
                         .WithMany("CourseStudyYearSpecializations")
                         .HasForeignKey("StudyYearId");
 
-                    b.HasOne("school_management_wpf_project.Models.StudyYearSpecialization", "StudyYearSpecializations")
+                    b.HasOne("school_management_wpf_project.Models.StudyYearSpecialization", "StudyYearSpecialization")
                         .WithMany()
-                        .HasForeignKey("StudyYearSpecializationsId")
+                        .HasForeignKey("StudyYearSpecializationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Course");
 
-                    b.Navigation("StudyYearSpecializations");
+                    b.Navigation("StudyYearSpecialization");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.Grade", b =>
@@ -575,11 +566,6 @@ namespace school_management_wpf_project.Migrations
                     b.Navigation("CourseStudyYearSpecializations");
 
                     b.Navigation("StudyYearSpecializations");
-                });
-
-            modelBuilder.Entity("school_management_wpf_project.Models.StudyYearSpecialization", b =>
-                {
-                    b.Navigation("Courses");
                 });
 #pragma warning restore 612, 618
         }

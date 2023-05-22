@@ -15,6 +15,7 @@ namespace school_management_wpf_project.ViewModels {
 		private Specialization _specialization;
 		private Course _course;
 		private HomeroomTeacher _homeroomTeacher;
+		private StudyYearSpecialization _studyYearSpecialization;
 
 		public AdminViewModel() {
 			// initialize members
@@ -25,6 +26,8 @@ namespace school_management_wpf_project.ViewModels {
 			AvailableTeachers = new ObservableCollection<User>(TeacherBLL.GetAll());
 			AvailableSpecializations = new ObservableCollection<Specialization>(SpecializationBLL.GetAll());
 			AvailableStudyYears = new ObservableCollection<StudyYear>(StudyYearBLL.GetAll());
+			AvailableStudyYearSpecializations = new ObservableCollection<StudyYearSpecialization>(StudyYearSpecializationBLL.GetAll());
+			AvailableCourses = new ObservableCollection<Course>(CourseBLL.GetAll());
 			RoleChoices = new List<string> { "student", "teacher", "admin" };
 
 			// initialize commands
@@ -34,6 +37,7 @@ namespace school_management_wpf_project.ViewModels {
 			AddClassCommand = new RelayCommand(AddClass);
 			LinkStudyYearToSpecializationCommand = new RelayCommand(LinkStudyYearToSpecialization);
 			AddUserCommand = new RelayCommand(AddUser);
+			LinkCourseToStudyYearSpecializationCommand = new RelayCommand(LinkCourseToStudyYearSpecialization);
 		}
 
 		////////////////////////////////////////////	gets and sets
@@ -78,6 +82,14 @@ namespace school_management_wpf_project.ViewModels {
 			}
 		}
 
+		public StudyYearSpecialization StudyYearSpecialization {
+			get => _studyYearSpecialization;
+			set {
+				SetProperty(ref _studyYearSpecialization, value);
+				OnPropertyChanged(nameof(StudyYearSpecialization));
+			}
+		}
+
 		public List<string> RoleChoices {
 			get; set;
 		}
@@ -91,6 +103,14 @@ namespace school_management_wpf_project.ViewModels {
 		}
 
 		public ObservableCollection<StudyYear> AvailableStudyYears {
+			get; set;
+		}
+
+		public ObservableCollection<StudyYearSpecialization> AvailableStudyYearSpecializations {
+			get; set;
+		}
+
+		public ObservableCollection<Course> AvailableCourses {
 			get; set;
 		}
 
@@ -120,6 +140,10 @@ namespace school_management_wpf_project.ViewModels {
 			get;
 		}
 
+		public ICommand LinkCourseToStudyYearSpecializationCommand {
+			get;
+		}
+
 		////////////////////////////////////////////	Methods
 
 		private void AddStudyYear() {
@@ -133,13 +157,12 @@ namespace school_management_wpf_project.ViewModels {
 		}
 
 		private void AddCourse() {
-			Course.HomeroomTeacher = User;
 			CourseBLL.Add(Course);
 			MessageBox.Show("Course added successfully");
 		}
 
 		private void AddClass() {
-			Classroom classroom = new Classroom {
+			Classroom classroom = new() {
 				Specialization = Specialization
 			};
 			ClassroomBLL.Add(classroom);
@@ -147,12 +170,21 @@ namespace school_management_wpf_project.ViewModels {
 		}
 
 		private void LinkStudyYearToSpecialization() {
-			StudyYearSpecialization s = new StudyYearSpecialization() {
+			StudyYearSpecialization s = new() {
 				StudyYear = StudyYear,
 				Specialization = Specialization
 			};
 			StudyYearSpecializationBLL.Add(s);
 			MessageBox.Show("succesfully linked the study year to the specialization");
+		}
+
+		private void LinkCourseToStudyYearSpecialization() {
+			CourseStudyYearSpecialization css = new() {
+				StudyYearSpecialization = StudyYearSpecialization,
+				Course = Course
+			};
+			CourseStudyYearSpecializationBLL.Add(css);
+			MessageBox.Show("successfully linked course with the study year and specialization");
 		}
 
 		private void AddUser() {

@@ -6,7 +6,7 @@
 		public Course Course {
 			get; set;
 		}
-		public StudyYearSpecialization StudyYearSpecializations {
+		public StudyYearSpecialization StudyYearSpecialization {
 			get; set;
 		}
 	}
