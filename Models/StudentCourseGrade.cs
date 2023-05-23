@@ -1,18 +1,14 @@
 ﻿namespace school_management_wpf_project.Models {
-	public class StudentCourse {
+	public class StudentCourseGrade {
 		public int Id {
 			get; set;
 		}
 
-		public User Student {
+		public StudentCourse StudentCourse {
 			get; set;
 		}
 
-		public Course Course {
-			get; set;
-		}
-
-		public int Absences {
+		public int Grade {
 			get; set;
 		}
 	}

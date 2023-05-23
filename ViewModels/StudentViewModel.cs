@@ -1,15 +1,23 @@
-﻿using school_management_wpf_project.Data;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using school_management_wpf_project.BusinessLogicLayer;
 using school_management_wpf_project.Models;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using school_management_wpf_project.Services;
+using System.Collections.ObjectModel;
 
 namespace school_management_wpf_project.ViewModels {
-	public class StudentViewModel {
+	public class StudentViewModel : ObservableObject {
 		private User _user;
+		private StudentCourse _studentCourse;
 
-		public StudentViewModel(User user, SchoolDbContext schoolDbContext) {
-			_user = user;
+		public StudentViewModel() {
+			User = UserService.GetLoggedInUser();
+			StudentCourse = new StudentCourse();
+			AvailableStudentCourses = new ObservableCollection<StudentCourse>(StudentCourseBLL.GetAllByStudent(User));
+
+			// initialize commands
 		}
+
+		////////////////////////////////////////////	gets and sets
 
 		public User User {
 			get => _user;
@@ -19,10 +27,24 @@ namespace school_management_wpf_project.ViewModels {
 			}
 		}
 
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		protected void OnPropertyChanged([CallerMemberName] string propertyName = null) {
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		public StudentCourse StudentCourse {
+			get => _studentCourse;
+			set {
+				_studentCourse = value;
+				OnPropertyChanged(nameof(StudentCourse));
+			}
 		}
+
+		public ObservableCollection<StudentCourse> AvailableStudentCourses {
+			get; set;
+		}
+
+		////////////////////////////////////////////	ICommands
+
+
+
+		////////////////////////////////////////////	Methods
+
+
 	}
 }

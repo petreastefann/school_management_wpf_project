@@ -1,5 +1,7 @@
-﻿using school_management_wpf_project.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using school_management_wpf_project.Data;
 using school_management_wpf_project.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace school_management_wpf_project.DataAccessLayer {
@@ -13,6 +15,15 @@ namespace school_management_wpf_project.DataAccessLayer {
 				return studentCourse;
 			}
 			return new StudentCourse();
+		}
+
+		public static List<StudentCourse> GetAllByStudent(User student) {
+			var studentCourses = _db.StudentCourses
+				.Include(sc => sc.Course)
+				.Include(sc => sc.Student)
+				.Where(sc => sc.Student.Id == student.Id).ToList();
+
+			return studentCourses;
 		}
 
 		public static void Update(StudentCourse studentCourse) {

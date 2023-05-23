@@ -4,7 +4,7 @@
 
 namespace school_management_wpf_project.Migrations {
 	/// <inheritdoc />
-	public partial class _23_05_22_22_15 : Migration {
+	public partial class _23_05_23_13_40 : Migration {
 		/// <inheritdoc />
 		protected override void Up(MigrationBuilder migrationBuilder) {
 			migrationBuilder.CreateTable(
@@ -172,32 +172,6 @@ namespace school_management_wpf_project.Migrations {
 				});
 
 			migrationBuilder.CreateTable(
-				name: "Grades",
-				columns: table => new {
-					Id = table.Column<int>(type: "int", nullable: false)
-						.Annotation("SqlServer:Identity", "1, 1"),
-					StudentId = table.Column<int>(type: "int", nullable: false),
-					SubjectId = table.Column<int>(type: "int", nullable: false),
-					Value = table.Column<int>(type: "int", nullable: false),
-					Semester = table.Column<int>(type: "int", nullable: false)
-				},
-				constraints: table => {
-					table.PrimaryKey("PK_Grades", x => x.Id);
-					table.ForeignKey(
-						name: "FK_Grades_Subjects_SubjectId",
-						column: x => x.SubjectId,
-						principalTable: "Subjects",
-						principalColumn: "Id",
-						onDelete: ReferentialAction.Cascade);
-					table.ForeignKey(
-						name: "FK_Grades_Users_StudentId",
-						column: x => x.StudentId,
-						principalTable: "Users",
-						principalColumn: "Id",
-						onDelete: ReferentialAction.Cascade);
-				});
-
-			migrationBuilder.CreateTable(
 				name: "Classrooms",
 				columns: table => new {
 					Id = table.Column<int>(type: "int", nullable: false)
@@ -309,6 +283,31 @@ namespace school_management_wpf_project.Migrations {
 				});
 
 			migrationBuilder.CreateTable(
+				name: "StudentCourses",
+				columns: table => new {
+					Id = table.Column<int>(type: "int", nullable: false)
+						.Annotation("SqlServer:Identity", "1, 1"),
+					StudentId = table.Column<int>(type: "int", nullable: false),
+					CourseId = table.Column<int>(type: "int", nullable: false),
+					Absences = table.Column<int>(type: "int", nullable: false)
+				},
+				constraints: table => {
+					table.PrimaryKey("PK_StudentCourses", x => x.Id);
+					table.ForeignKey(
+						name: "FK_StudentCourses_Courses_CourseId",
+						column: x => x.CourseId,
+						principalTable: "Courses",
+						principalColumn: "Id",
+						onDelete: ReferentialAction.Cascade);
+					table.ForeignKey(
+						name: "FK_StudentCourses_Users_StudentId",
+						column: x => x.StudentId,
+						principalTable: "Users",
+						principalColumn: "Id",
+						onDelete: ReferentialAction.Restrict);
+				});
+
+			migrationBuilder.CreateTable(
 				name: "StudentClassrooms",
 				columns: table => new {
 					Id = table.Column<int>(type: "int", nullable: false)
@@ -349,6 +348,23 @@ namespace school_management_wpf_project.Migrations {
 						principalTable: "Classrooms",
 						principalColumn: "Id",
 						onDelete: ReferentialAction.Cascade);
+				});
+
+			migrationBuilder.CreateTable(
+				name: "Grades",
+				columns: table => new {
+					Id = table.Column<int>(type: "int", nullable: false)
+						.Annotation("SqlServer:Identity", "1, 1"),
+					Value = table.Column<int>(type: "int", nullable: false),
+					StudentCourseId = table.Column<int>(type: "int", nullable: true)
+				},
+				constraints: table => {
+					table.PrimaryKey("PK_Grades", x => x.Id);
+					table.ForeignKey(
+						name: "FK_Grades_StudentCourses_StudentCourseId",
+						column: x => x.StudentCourseId,
+						principalTable: "StudentCourses",
+						principalColumn: "Id");
 				});
 
 			migrationBuilder.CreateIndex(
@@ -417,14 +433,9 @@ namespace school_management_wpf_project.Migrations {
 				column: "StudyYearSpecializationId");
 
 			migrationBuilder.CreateIndex(
-				name: "IX_Grades_StudentId",
+				name: "IX_Grades_StudentCourseId",
 				table: "Grades",
-				column: "StudentId");
-
-			migrationBuilder.CreateIndex(
-				name: "IX_Grades_SubjectId",
-				table: "Grades",
-				column: "SubjectId");
+				column: "StudentCourseId");
 
 			migrationBuilder.CreateIndex(
 				name: "IX_HomeroomTeacherSubject_SubjectsId",
@@ -439,6 +450,16 @@ namespace school_management_wpf_project.Migrations {
 			migrationBuilder.CreateIndex(
 				name: "IX_StudentClassrooms_StudentId",
 				table: "StudentClassrooms",
+				column: "StudentId");
+
+			migrationBuilder.CreateIndex(
+				name: "IX_StudentCourses_CourseId",
+				table: "StudentCourses",
+				column: "CourseId");
+
+			migrationBuilder.CreateIndex(
+				name: "IX_StudentCourses_StudentId",
+				table: "StudentCourses",
 				column: "StudentId");
 
 			migrationBuilder.CreateIndex(
@@ -487,13 +508,16 @@ namespace school_management_wpf_project.Migrations {
 				name: "Students");
 
 			migrationBuilder.DropTable(
-				name: "Courses");
+				name: "StudentCourses");
 
 			migrationBuilder.DropTable(
 				name: "Subjects");
 
 			migrationBuilder.DropTable(
 				name: "Classrooms");
+
+			migrationBuilder.DropTable(
+				name: "Courses");
 
 			migrationBuilder.DropTable(
 				name: "HomeroomTeachers");

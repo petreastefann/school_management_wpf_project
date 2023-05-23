@@ -10,7 +10,7 @@ namespace school_management_wpf_project.Views {
 			InitializeComponent();
 		}
 
-		private void OpenAbsence(object sender, RoutedEventArgs e) {
+		private void AbsencesClick(object sender, RoutedEventArgs e) {
 			TeacherAddAbsences teacherAddAbsences = new() {
 				DataContext = this.DataContext
 			};
@@ -18,7 +18,7 @@ namespace school_management_wpf_project.Views {
 			teacherAddAbsences.Show();
 		}
 
-		private void OpenGrade(object sender, RoutedEventArgs e) {
+		private void GradesClick(object sender, RoutedEventArgs e) {
 			TeacherAddGrades teacherAddGrades = new() {
 				DataContext = this.DataContext
 			};
@@ -26,7 +26,7 @@ namespace school_management_wpf_project.Views {
 			teacherAddGrades.Show();
 		}
 
-		private void OpenAverage(object sender, RoutedEventArgs e) {
+		private void AveragesClick(object sender, RoutedEventArgs e) {
 			TeacherAddAverages teacherAddAverages = new() {
 				DataContext = this.DataContext
 			};
@@ -34,7 +34,7 @@ namespace school_management_wpf_project.Views {
 			teacherAddAverages.Show();
 		}
 
-		private void OpenMaterial(object sender, RoutedEventArgs e) {
+		private void MaterialClick(object sender, RoutedEventArgs e) {
 			TeacherAddMaterial teacherAddMaterial = new() {
 				DataContext = this.DataContext
 			};

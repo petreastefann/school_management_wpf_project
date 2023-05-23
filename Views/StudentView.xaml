@@ -3,19 +3,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:school_management_wpf_project.Views"
+        xmlns:local="clr-namespace:school_management_wpf_project.Views" 
+        xmlns:vms="clr-namespace:school_management_wpf_project.ViewModels"
         mc:Ignorable="d"
         Title="StudentView" Height="450" Width="800">
+    <Window.DataContext>
+        <vms:StudentViewModel/>
+    </Window.DataContext>
     <Grid>
         <TextBlock>
             <Run Text="welcome, "/>
-            <Run Text="{Binding User.Username}"/>
+            <Run Text="student"/>
         </TextBlock>
         <TextBlock Text="STUDENT VIEW" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-        <Button Content="teaching material" Height="30" Width="100" Margin="0,300,560,0" Click="StudentSeeTeachingMaterial"/>
+        <Button Content="teaching material" Height="30" Width="150" Margin="0,300,560,0" Click="StudentSeeTeachingMaterial"/>
         <Button Content="all grades" Height="30" Width="100" Margin="0,300,260,0" Click="StudentSeeGrades"/>
-        <Button Content="all absences" Height="30" Width="100" Margin="0,300,0,0" Click="StudentSeeAbsences"/>
-        <Button Content="all averages" Height="30" Width="100" Margin="300,300,0,0" Click="StudentSeeAverages"/>
+        <Button Content="all absences" Height="30" Width="120" Margin="0,300,0,0" Click="StudentSeeAbsences"/>
+        <Button Content="all averages" Height="30" Width="120" Margin="300,300,0,0" Click="StudentSeeAverages"/>
     </Grid>
 </Window>

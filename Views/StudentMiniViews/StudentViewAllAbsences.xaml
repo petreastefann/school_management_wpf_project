@@ -3,10 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:school_management_wpf_project.Views.StudentMiniViews"
+        xmlns:local="clr-namespace:school_management_wpf_project.Views.StudentMiniViews" 
+        xmlns:viewmodels="clr-namespace:school_management_wpf_project.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:StudentViewModel}"
         mc:Ignorable="d"
         Title="StudentViewAllAbsences" Height="450" Width="800">
     <Grid>
-        <TextBlock Text="StudentViewAllAbsences" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="StudentViewAllAbsences" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50"/>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <DockPanel>
+                <Label>Course:</Label>
+                <ComboBox ItemsSource="{Binding AvailableStudentCourses}"
+                          SelectedItem="{Binding StudentCourse}"
+                          DisplayMemberPath="Name">
+                </ComboBox>
+            </DockPanel>
+            <Label Content="absences: "/>
+            <DataGrid ItemsSource="{Binding StudentCourseAbsences}" IsReadOnly="True">
+                
+            </DataGrid>
+        </StackPanel>
     </Grid>
 </Window>
