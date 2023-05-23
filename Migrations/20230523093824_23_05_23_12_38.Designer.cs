@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using school_management_wpf_project.Data;
 
@@ -11,9 +12,11 @@ using school_management_wpf_project.Data;
 namespace school_management_wpf_project.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    partial class SchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230523093824_23_05_23_12_38")]
+    partial class _23_05_23_12_38
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,7 +214,13 @@ namespace school_management_wpf_project.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("StudentCourseId")
+                    b.Property<int>("Semester")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
                         .HasColumnType("int");
 
                     b.Property<int>("Value")
@@ -219,7 +228,9 @@ namespace school_management_wpf_project.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StudentCourseId");
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Grades");
                 });
@@ -581,9 +592,21 @@ namespace school_management_wpf_project.Migrations
 
             modelBuilder.Entity("school_management_wpf_project.Models.Grade", b =>
                 {
-                    b.HasOne("school_management_wpf_project.Models.StudentCourse", null)
-                        .WithMany("Grades")
-                        .HasForeignKey("StudentCourseId");
+                    b.HasOne("school_management_wpf_project.Models.User", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("school_management_wpf_project.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
+
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.Student", b =>
@@ -662,11 +685,6 @@ namespace school_management_wpf_project.Migrations
             modelBuilder.Entity("school_management_wpf_project.Models.Specialization", b =>
                 {
                     b.Navigation("StudyYearSpecialization");
-                });
-
-            modelBuilder.Entity("school_management_wpf_project.Models.StudentCourse", b =>
-                {
-                    b.Navigation("Grades");
                 });
 
             modelBuilder.Entity("school_management_wpf_project.Models.StudyYear", b =>

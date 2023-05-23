@@ -18,15 +18,15 @@
         </TextBlock>
         <TextBlock Text="ADMIN VIEW" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
-        <StackPanel>
-            <Button Click="OpenClass" Margin="5" Width="150" Height="40">Add Class</Button>
-            <Button Click="OpenUser" Margin="5" Width="150" Height="40">Add User</Button>
-            <Button Click="OpenSpecialization" Margin="5" Width="150" Height="40">Add Specialization</Button>
-            <Button Click="OpenStudyYear" Margin="5" Width="150" Height="40">Add Study year</Button>
-            <Button Click="OpenCourse" Margin="5" Width="150" Height="40">Add Course</Button>
-            <Button Click="OpenLinkStudentToClass" Margin="5" Width="150" Height="40">Link student to class</Button>
-            <Button Click="OpenCourseToStudyYear" Margin="5" Width="150" Height="40">Link Course And Study Year Specilaization</Button>
-            <Button Click="OpenStudyYearToSpecialization" Margin="5" Width="150" Height="40">Link Study Year and Specialization</Button>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Click="OpenClass" Margin="5" Width="150" Height="40">add class</Button>
+            <Button Click="OpenUser" Margin="5" Width="150" Height="40">add user</Button>
+            <Button Click="OpenSpecialization" Margin="5" Width="150" Height="40">add specialization</Button>
+            <Button Click="OpenStudyYear" Margin="5" Width="150" Height="40">add study year</Button>
+            <Button Click="OpenCourse" Margin="5" Width="150" Height="40">add course</Button>
+            <Button Click="OpenLinkStudentToClass" Margin="5" Width="200" Height="40">link student to class</Button>
+            <Button Click="OpenCourseToStudyYear" Margin="5" Width="300" Height="40">link course and study year specilaization</Button>
+            <Button Click="OpenStudyYearToSpecialization" Margin="5" Width="250" Height="40">link study year and specialization</Button>
         </StackPanel>
     </Grid>
 </Window>

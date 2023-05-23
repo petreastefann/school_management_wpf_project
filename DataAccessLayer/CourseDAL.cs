@@ -24,5 +24,9 @@ namespace school_management_wpf_project.DataAccessLayer {
 				return new List<Course>();
 			return _db.Courses.Include(c => c.HomeroomTeacher).ToList();
 		}
+
+		public static List<Course> GetAllByTeacher(User teacher) {
+			return _db.Courses.Where(c => c.HomeroomTeacher.Id == teacher.Id).ToList();
+		}
 	}
 }

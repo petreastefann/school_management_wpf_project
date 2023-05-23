@@ -12,21 +12,21 @@
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <DockPanel>
-                <Label>Class:</Label>
+                <Label>class:</Label>
                 <ComboBox ItemsSource="{Binding AvailableClassrooms}"
                           SelectedItem="{Binding Classroom}"
                           DisplayMemberPath="Name">
                 </ComboBox>
             </DockPanel>
             <DockPanel>
-                <Label>Student:</Label>
+                <Label>student:</Label>
                 <ComboBox ItemsSource="{Binding AvailableStudents}"
                           SelectedItem="{Binding User}"
                           DisplayMemberPath="Username">
 
                 </ComboBox>
             </DockPanel>
-            <Button Command="{Binding LinkStudentToClassroomCommand}">Link</Button>
+            <Button Command="{Binding LinkStudentToClassroomCommand}">link</Button>
 
             <Button Content="close" Margin="10" Click="Button_Click"/>
         </StackPanel>

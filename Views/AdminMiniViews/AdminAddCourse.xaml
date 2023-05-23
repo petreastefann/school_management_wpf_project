@@ -12,22 +12,22 @@
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,300,0">
             <DockPanel>
-                <Label>Name:</Label>
+                <Label>name:</Label>
                 <TextBox Text="{Binding Course.Name}"></TextBox>
             </DockPanel>
             <DockPanel>
-                <Label>Has final exam:</Label>
+                <Label>has final exam:</Label>
                 <CheckBox IsChecked="{Binding Course.HasFinalExam}"></CheckBox>
             </DockPanel>
             <DockPanel>
-                <Label>Teacher:</Label>
+                <Label>teacher:</Label>
                 <ComboBox ItemsSource="{Binding AvailableTeachers}"
                           SelectedItem="{Binding Course.HomeroomTeacher}"
                           DisplayMemberPath="Username">
                 </ComboBox>
             </DockPanel>
-            <Button Command="{Binding AddCourseCommand}">Add</Button>
-            <Button Click="Close" Margin="10">Close</Button>
+            <Button Command="{Binding AddCourseCommand}">add</Button>
+            <Button Click="Close" Margin="10">close</Button>
         </StackPanel>
     </Grid>
 </Window>

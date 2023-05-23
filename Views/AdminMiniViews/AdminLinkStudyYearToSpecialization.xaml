@@ -12,18 +12,18 @@
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <DockPanel>
-                <Label>Study year:</Label>
+                <Label>study year:</Label>
                 <ComboBox ItemsSource="{Binding AvailableStudyYears}"
                           SelectedItem="{Binding StudyYear}"
                           DisplayMemberPath="Name"></ComboBox>
             </DockPanel>
             <DockPanel>
-                <Label>Specialization:</Label>
+                <Label>specialization:</Label>
                 <ComboBox ItemsSource="{Binding AvailableSpecializations}"
                           SelectedItem="{Binding Specialization}"
                           DisplayMemberPath="Name"></ComboBox>
             </DockPanel>
-            <Button Command="{Binding LinkStudyYearToSpecializationCommand}">Link</Button>
+            <Button Command="{Binding LinkStudyYearToSpecializationCommand}">link</Button>
 
             <Button Content="close" Margin="10" Click="Button_Click"/>
         </StackPanel>

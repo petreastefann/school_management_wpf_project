@@ -13,7 +13,7 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,300,0">
             <DockPanel>
                 <Label>
-                    Add study year and specialization:
+                    add study year and specialization:
                 </Label>
                 <ComboBox ItemsSource="{Binding AvailableStudyYearSpecializations}"
                           SelectedItem="{Binding Classroom.StudyYearSpecialization}"
@@ -31,9 +31,9 @@
                 <Label>Name:</Label>
                 <TextBox Text="{Binding Classroom.Name}"></TextBox>
             </DockPanel>
-            <Button Command="{Binding AddClassCommand}">Add</Button>
+            <Button Command="{Binding AddClassCommand}">add</Button>
 
-            <Button Content="Close" Margin="10" Click="Button_Click"/>
+            <Button Content="close" Margin="10" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>

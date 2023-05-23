@@ -7,15 +7,15 @@
         mc:Ignorable="d"
         Title="AdminAddSpecialization" Height="450" Width="800">
     <Grid>
-        <TextBlock Text="AdminAddSpecialization" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="AdminAddSpecialization" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50"/>
 
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,300,0">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <DockPanel>
-                <Label>Specialization name:</Label>
+                <Label>specialization name:</Label>
                 <TextBox Text="{Binding Specialization.Name}"></TextBox>
             </DockPanel>
-            <Button Margin="5" Command="{Binding AddSpecializationCommand, UpdateSourceTrigger=PropertyChanged}">Add</Button>
-            <Button Margin="5" Click="Close">Close</Button>
+            <Button Margin="5" Command="{Binding AddSpecializationCommand, UpdateSourceTrigger=PropertyChanged}">add</Button>
+            <Button Margin="5" Click="Close">close</Button>
         </StackPanel>
     </Grid>
 </Window>

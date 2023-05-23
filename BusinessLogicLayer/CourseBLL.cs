@@ -10,5 +10,8 @@ namespace school_management_wpf_project.BusinessLogicLayer {
 		public static List<Course> GetAll() {
 			return CourseDAL.GetAll();
 		}
+		public static List<Course> GetAllByTeacher(User teacher) {
+			return CourseDAL.GetAllByTeacher(teacher);
+		}
 	}
 }

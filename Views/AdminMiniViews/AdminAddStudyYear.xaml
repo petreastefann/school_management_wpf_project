@@ -13,15 +13,15 @@
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,300,0">
             <DockPanel>
-                <Label>Year name:</Label>
+                <Label>year name:</Label>
                 <TextBox Text="{Binding StudyYear.Name}"></TextBox>
             </DockPanel>
             <DockPanel>
-                <Label>Year:</Label>
+                <Label>year:</Label>
                 <TextBox Text="{Binding StudyYear.Year}"></TextBox>
             </DockPanel>
-            <Button Margin="5" Command="{Binding AddStudyYearCommand}">Add</Button>
-            <Button Margin="5" Click="Close">Close</Button>
+            <Button Margin="5" Command="{Binding AddStudyYearCommand}">add</Button>
+            <Button Margin="5" Click="Close">close</Button>
         </StackPanel>
     </Grid>
 </Window>
