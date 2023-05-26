@@ -1,19 +1,21 @@
-# school_management_wpf_project
+# PROJECT DISCONTINUED DUE TO THE DEVELOPMENT TEAM'S FUNDS RUNNING OUT
+
+### school_management_wpf_project
 a project which aims to be a school management app.
 
 ### configuration
 - create a database named school_management_db (or anything of your choice as long as you change the connection string in the appsettings.json file).
-- create a table users that coincides with the User model.
-- etc..
-
+- that's it really.
+- it has some bugs such as some unhandled exceptions or the fact that some fields do not change real-time, but its a good start
 
 
 ### roadmap
 
 - [x] login
-- [ ] register
+
+~~- [ ] register~~
 - [x] change windows when succesfully logging in
 - [x] move the logged user data to a specific View depending on their role
-- [ ] do each View
-- [ ] do the functionality of the each ViewModel (admin, teacher, user)
-- [ ] see that database
+- [x] do each View
+- [x] (ish) do the functionality of the each ViewModel (admin, teacher, user)
+- [x] see that database
