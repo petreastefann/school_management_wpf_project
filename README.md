@@ -4,7 +4,11 @@
 a project which aims to be a school management app.
 
 ### configuration
-- create a database named school_management_db (or anything of your choice as long as you change the connection string in the appsettings.json file).
+- (you need to have ssms installed)
+- in the project, go into Tools -> NuGet Package Manager -> Package Manager Console
+- in the opened console type "Add-Migration (your random migration name here)"
+- then in the same console type "Update-Database"
+- (because i have no user register you have to insert at least an admin into the users table)
 - that's it really.
 - it has some bugs such as some unhandled exceptions or the fact that some fields do not change real-time, but its a good start
 
